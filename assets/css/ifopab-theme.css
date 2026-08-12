@@ -405,7 +405,7 @@ html {
 
 .banner-carousel .content-box .eyebrow {
     display: block;
-    color: var(--ifopab-text-on-dark-muted);
+    color: var(--ifopab-white);
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 2px;
