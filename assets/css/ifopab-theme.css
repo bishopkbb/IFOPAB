@@ -271,6 +271,12 @@
     color: var(--ifopab-primary) !important;
 }
 
+/* Scroll-to-top button — sitewide element, still the demo green from
+   color.css. */
+.scroll-top {
+    background: var(--ifopab-primary);
+}
+
 /* ---------------------------------------------------------------------
    Focus visibility
    The template's global reset (`* { outline: none; }` in style.css) strips
@@ -428,7 +434,7 @@ html {
 .calling-section .sec-title h2 {
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     line-height: 1.25;
-    color: var(--ifopab-text);
+    color: var(--ifopab-primary);
     font-family: var(--ifopab-font-heading);
 }
 
@@ -474,18 +480,24 @@ html {
 
 .calling-card {
     height: 100%;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: var(--ifopab-surface);
-    border: 1px solid var(--ifopab-border);
+    border: 2px solid var(--ifopab-accent);
     border-radius: 20px;
     padding: 44px 30px;
     text-align: center;
-    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
 }
 
 .calling-card:hover {
+    background: var(--ifopab-accent);
+    border-color: var(--ifopab-primary);
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.12);
-    border-color: color-mix(in srgb, var(--ifopab-primary) 30%, transparent);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
 }
 
 .calling-card-number {
@@ -500,6 +512,12 @@ html {
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 20px;
+    transition: background 300ms ease, color 300ms ease;
+}
+
+.calling-card:hover .calling-card-number {
+    background: var(--ifopab-white);
+    color: var(--ifopab-primary);
 }
 
 .calling-card p {
@@ -508,6 +526,11 @@ html {
     line-height: 1.3;
     color: var(--ifopab-primary);
     margin: 0;
+    transition: color 300ms ease;
+}
+
+.calling-card:hover p {
+    color: var(--ifopab-white);
 }
 
 @media only screen and (max-width: 767px) {

@@ -17,32 +17,32 @@
         </div>
 
         <div class="calling-cards row clearfix">
-            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col">
-                <div class="calling-card wow fadeInUp" data-wow-delay="0ms">
+            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col wow fadeInUp" data-wow-delay="0ms">
+                <div class="calling-card">
                     <span class="calling-card-number">01</span>
                     <p>They shepherd.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col">
-                <div class="calling-card wow fadeInUp" data-wow-delay="100ms">
+            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col wow fadeInUp" data-wow-delay="100ms">
+                <div class="calling-card">
                     <span class="calling-card-number">02</span>
                     <p>They teach.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col">
-                <div class="calling-card wow fadeInUp" data-wow-delay="200ms">
+            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col wow fadeInUp" data-wow-delay="200ms">
+                <div class="calling-card">
                     <span class="calling-card-number">03</span>
                     <p>They lead.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col">
-                <div class="calling-card wow fadeInUp" data-wow-delay="300ms">
+            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col wow fadeInUp" data-wow-delay="300ms">
+                <div class="calling-card">
                     <span class="calling-card-number">04</span>
                     <p>They counsel.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col">
-                <div class="calling-card wow fadeInUp" data-wow-delay="400ms">
+            <div class="col-lg-4 col-md-6 col-sm-12 calling-card-col wow fadeInUp" data-wow-delay="400ms">
+                <div class="calling-card">
                     <span class="calling-card-number">05</span>
                     <p>They strengthen congregations.</p>
                 </div>
