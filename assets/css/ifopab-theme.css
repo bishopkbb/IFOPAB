@@ -22,6 +22,7 @@
     --ifopab-text: var(--ifopab-charcoal);
     --ifopab-text-muted: var(--ifopab-gray);
     --ifopab-text-on-dark: rgba(255, 255, 255, 0.92);
+    --ifopab-text-on-dark-muted: color-mix(in srgb, var(--ifopab-white) 82%, var(--ifopab-charcoal));
     --ifopab-background: var(--ifopab-white);
     --ifopab-surface: #F5F7F8;
     --ifopab-border: rgba(74, 74, 74, 0.15);
@@ -202,6 +203,11 @@
     background: var(--ifopab-accent);
     background-image: none;
     border-radius: 4px;
+    /* Template default was bottom: -34px — sat noticeably far below the
+       link text. Moved closer; applies to both the current-page state and
+       the hover state, since both just scale-in this same positioned
+       element rather than each having their own offset. */
+    bottom: -12px;
 }
 
 .main-menu .navigation > li.current > a,
@@ -357,11 +363,14 @@ html {
 /* The hero overlay above is heavily blue-tinted, so the shared
    .theme-btn-one's blue resting fill would blend into it too closely —
    same issue as the sticky-header CTA. Gold draws the eye as the hero's
-   one primary action; hover sweeps to white with the (already-blue) text
-   unchanged, rather than a jarring colour flip. */
+   one primary action; resting text is white per client direction (note:
+   white-on-accent-gold measures ~2:1 contrast, well under WCAG AA for
+   this text size — flagged, kept as directed). Hover sweeps to white
+   with text flipping to blue, since white-on-white would otherwise
+   disappear once the sweep completes. */
 .banner-carousel .content-box .btn-box .theme-btn-one {
     background: var(--ifopab-accent);
-    color: var(--ifopab-primary) !important;
+    color: var(--ifopab-white) !important;
 }
 
 .banner-carousel .content-box .btn-box .theme-btn-one:before {
