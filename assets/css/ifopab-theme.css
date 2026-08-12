@@ -1008,3 +1008,56 @@ html {
         padding: 80px 0;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Looking Beyond the Gathering
+   Surface background, alternating from Who Should Attend's plain white.
+   The two closing lines get the same emphasis treatment as the Vision
+   section's closing pair — same rhetorical structure in the approved
+   copy ("This is not X. It is Y."), so the same visual treatment.
+   ------------------------------------------------------------------- */
+
+.future-section {
+    padding: 120px 0;
+    background: var(--ifopab-surface);
+}
+
+.future-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.future-copy {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.future-copy p {
+    color: var(--ifopab-text);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.future-closing {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin: 0 0 8px;
+}
+
+.future-closing:first-of-type {
+    margin-top: 24px;
+}
+
+.future-closing:last-of-type {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .future-section {
+        padding: 80px 0;
+    }
+}

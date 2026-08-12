@@ -5,7 +5,6 @@
 <script src="assets/js/owl.js"></script>
 <script src="assets/js/wow.js"></script>
 <script src="assets/js/validation.js"></script>
-<script src="assets/js/jquery.fancybox.js"></script>
 <script src="assets/js/appear.js"></script>
 <script src="assets/js/scrollbar.js"></script>
 
