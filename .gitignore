@@ -1,0 +1,17 @@
+# Internal project context — brand assets, contact info, and planning docs.
+# Not for the public/shared repo.
+docs/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
