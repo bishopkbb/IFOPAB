@@ -31,7 +31,7 @@
     <div class="header-lower">
         <div class="outer-box">
             <div class="logo-box">
-                <figure class="logo"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
+                <figure class="logo"><a href="#home" aria-label="IFOPAB home"><img src="assets/images/logo.png" alt="IFOPAB"></a></figure>
             </div>
             <div class="menu-area">
                 <!--Mobile Navigation Toggler-->
@@ -47,23 +47,8 @@
                 </nav>
             </div>
             <div class="menu-right-content clearfix">
-                <div class="search-box-outer">
-                    <div class="dropdown">
-                        <button class="search-box-btn" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-magnifying-glass"></i></button>
-                        <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
-                            <div class="form-container">
-                                <form method="post" action="https://azim.commonsupport.com/Recvite/blog.html">
-                                    <div class="form-group">
-                                        <input type="search" name="search-field" value="" placeholder="Search...." required="">
-                                        <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="btn-box">
-                    <a href="contact.html" class="theme-btn-one">Book appointment</a>
+                    <a href="#save-the-date" class="theme-btn-one">Save the Date</a>
                 </div>
             </div>
         </div>
@@ -73,7 +58,7 @@
     <div class="sticky-header">
         <div class="outer-box">
             <div class="logo-box">
-                <figure class="logo"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
+                <figure class="logo"><a href="#home" aria-label="IFOPAB home"><img src="assets/images/logo.png" alt="IFOPAB"></a></figure>
             </div>
             <div class="menu-area">
                 <nav class="main-menu clearfix">
@@ -81,23 +66,8 @@
                 </nav>
             </div>
             <div class="menu-right-content clearfix">
-                <div class="search-box-outer">
-                    <div class="dropdown">
-                        <button class="search-box-btn" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-magnifying-glass"></i></button>
-                        <div class="dropdown-menu search-panel" aria-labelledby="dropdownMenu3">
-                            <div class="form-container">
-                                <form method="post" action="https://azim.commonsupport.com/Recvite/blog.html">
-                                    <div class="form-group">
-                                        <input type="search" name="search-field" value="" placeholder="Search...." required="">
-                                        <button type="submit" class="search-btn"><span class="fas fa-search"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="btn-box">
-                    <a href="contact.html" class="theme-btn-one">Book appointment</a>
+                    <a href="#save-the-date" class="theme-btn-one">Save the Date</a>
                 </div>
             </div>
         </div>
@@ -111,7 +81,7 @@
     <div class="close-btn"><i class="fas fa-times"></i></div>
 
     <nav class="menu-box">
-        <div class="nav-logo"><a href="index.html"><img src="assets/images/logo-2.png" alt="" title=""></a></div>
+        <div class="nav-logo"><a href="#home" aria-label="IFOPAB home"><img src="assets/images/logo-2.png" alt="IFOPAB"></a></div>
         <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
         <div class="contact-info">
             <h4>Contact Info</h4>
@@ -121,13 +91,17 @@
                 <li><a href="mailto:info@ifopab.org">info@ifopab.org</a></li>
             </ul>
         </div>
+        <!--
+            Placeholder destinations: no official IFOPAB social profiles have
+            been supplied yet, so these link to the main site rather than an
+            invented profile URL. Swap the href values once real profile
+            URLs are approved. Kept in sync with the top bar's social icons.
+        -->
         <div class="social-links">
             <ul class="clearfix">
-                <li><a href="index.html"><span class="fab fa-twitter"></span></a></li>
-                <li><a href="index.html"><span class="fab fa-facebook-square"></span></a></li>
-                <li><a href="index.html"><span class="fab fa-pinterest-p"></span></a></li>
-                <li><a href="index.html"><span class="fab fa-instagram"></span></a></li>
-                <li><a href="index.html"><span class="fab fa-youtube"></span></a></li>
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on Facebook"><span class="fab fa-facebook-square" aria-hidden="true"></span></a></li>
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on Instagram"><span class="fab fa-instagram" aria-hidden="true"></span></a></li>
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on YouTube"><span class="fab fa-youtube" aria-hidden="true"></span></a></li>
             </ul>
         </div>
     </nav>

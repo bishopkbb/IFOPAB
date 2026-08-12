@@ -136,6 +136,17 @@
     color: var(--ifopab-accent);
 }
 
+/* .clearfix's ::after becomes a real (if empty) flex item once its parent
+   is display:flex, which would silently consume a gap slot and skew
+   space-between. Clearfix exists to contain floats — these containers no
+   longer float anything, so its generated content is neutralized here
+   rather than removing the (harmless) class from the markup. */
+.header-top .top-inner.clearfix::after,
+.header-top .info-list.clearfix::after,
+.header-top .social-links.clearfix::after {
+    display: none;
+}
+
 @media only screen and (max-width: 991px) {
     .header-top .top-inner {
         justify-content: center;
@@ -173,4 +184,92 @@
 
 .main-header .sticky-header {
     top: var(--header-top-height);
+    border-bottom-color: var(--ifopab-accent);
+}
+
+/* ---------------------------------------------------------------------
+   Navigation
+   The template's active/hover underline used a green demo shape image
+   (shape-1.png); replaced with a plain CSS bar in the accent colour so
+   it's fully brand-controlled rather than depending on an off-brand
+   asset. The .current/:hover text-colour selectors below already exist
+   as empty placeholders in style.css — filling them in rather than
+   introducing a parallel set of rules.
+   ------------------------------------------------------------------- */
+
+.main-header.style-one .main-menu .navigation > li > a:before {
+    background: var(--ifopab-accent);
+    background-image: none;
+    border-radius: 4px;
+}
+
+.main-menu .navigation > li.current > a,
+.main-menu .navigation > li:hover > a,
+.sticky-header .main-menu .navigation > li.current > a,
+.sticky-header .main-menu .navigation > li:hover > a {
+    color: var(--ifopab-accent);
+}
+
+/* ---------------------------------------------------------------------
+   Primary button (shared .theme-btn-one component — used by the nav CTA
+   today and by every future section's buttons). Resting state uses the
+   primary blue; the template's existing sweep-on-hover mechanic is kept,
+   just recoloured from the demo green to brand colours.
+   ------------------------------------------------------------------- */
+
+.theme-btn-one {
+    background: var(--ifopab-primary);
+}
+
+.theme-btn-one:before {
+    background: var(--ifopab-charcoal);
+}
+
+.main-header .sticky-header .theme-btn-one:before {
+    background: var(--ifopab-white);
+}
+
+.main-header .sticky-header .theme-btn-one:hover {
+    color: var(--ifopab-primary) !important;
+}
+
+/* ---------------------------------------------------------------------
+   Focus visibility
+   The template's global reset (`* { outline: none; }` in style.css) strips
+   keyboard focus indicators everywhere with no replacement — a real
+   accessibility defect. A full sitewide fix belongs to the later
+   accessibility QA pass once every section exists; scoped here to the
+   interactive elements actually built in this navbar pass.
+   ------------------------------------------------------------------- */
+
+.main-menu .navigation > li > a:focus-visible,
+.header-top .info-list li a:focus-visible,
+.header-top .social-links li a:focus-visible,
+.mobile-menu .social-links li a:focus-visible,
+.theme-btn-one:focus-visible,
+.logo-box .logo a:focus-visible,
+.nav-logo a:focus-visible,
+.mobile-nav-toggler:focus-visible,
+.mobile-menu .close-btn:focus-visible {
+    outline: 2px solid var(--ifopab-accent);
+    outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------
+   Anchor scrolling foundation
+   The one-page nav below links to section IDs that don't exist yet
+   (#vision, #beliefs, etc. — those sections haven't been built). Smooth
+   scrolling is safe to establish now; the scroll-margin-top offset that
+   accounts for the fixed header stack is deferred until real sections
+   exist and can be checked visually rather than guessed.
+   ------------------------------------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
