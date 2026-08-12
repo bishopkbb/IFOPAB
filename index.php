@@ -13,7 +13,7 @@
         <?php include __DIR__ . '/includes/header.php'; ?>
 
         <?php include __DIR__ . '/sections/hero.php'; ?>
-        <?php include __DIR__ . '/sections/feature.php'; ?>
+        <?php include __DIR__ . '/sections/introduction.php'; ?>
         <?php include __DIR__ . '/sections/quote.php'; ?>
         <?php include __DIR__ . '/sections/about.php'; ?>
         <?php include __DIR__ . '/sections/service.php'; ?>

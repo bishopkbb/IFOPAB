@@ -397,3 +397,130 @@ html {
         opacity: 1 !important;
     }
 }
+
+/* wow.js/animate.css are already wired up (script.js initializes WOW()),
+   used by both the template's demo sections and the calling-list reveal
+   below, but nothing in the project respects reduced motion for it yet.
+   Fixing it here, sitewide, since it's a single safe rule that only ever
+   helps — unlike the outline:none accessibility gap, this doesn't
+   require touching every section individually. */
+@media (prefers-reduced-motion: reduce) {
+    .wow {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Calling / Introduction ("To the Men and Women Who Answer the Call.")
+   First real IFOPAB narrative section — light background per the design
+   doc's section-rhythm guidance (hero dark, calling light). Content
+   width constrained for readability rather than stretching the full
+   1200px container.
+   ------------------------------------------------------------------- */
+
+.calling-section {
+    padding: 130px 0;
+    background: var(--ifopab-background);
+}
+
+.calling-section .sec-title h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    line-height: 1.25;
+    color: var(--ifopab-text);
+    font-family: var(--ifopab-font-heading);
+}
+
+/* Flowing narrative text stays in a readable column; the card grid below
+   uses the full container width instead. */
+.calling-intro,
+.calling-body,
+.calling-closing {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calling-intro p,
+.calling-body p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.calling-closing {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+/* Card grid for the five calling statements. Soft, rounded surfaces
+   (no sharp edges, per request) rather than the plain stacked list this
+   replaced. */
+.calling-cards {
+    margin: 56px 0;
+    justify-content: center;
+}
+
+.calling-card-col {
+    margin-bottom: 30px;
+}
+
+.calling-card {
+    height: 100%;
+    background: var(--ifopab-surface);
+    border: 1px solid var(--ifopab-border);
+    border-radius: 20px;
+    padding: 44px 30px;
+    text-align: center;
+    transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.calling-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.12);
+    border-color: color-mix(in srgb, var(--ifopab-primary) 30%, transparent);
+}
+
+.calling-card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.calling-card p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ifopab-primary);
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .calling-section {
+        padding: 80px 0;
+    }
+
+    .calling-intro p,
+    .calling-body p {
+        font-size: 16px;
+    }
+
+    .calling-card {
+        padding: 36px 24px;
+    }
+}
