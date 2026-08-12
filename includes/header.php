@@ -13,6 +13,17 @@
                 <li><i class="flaticon-telephone"></i><a href="tel:+17208591737">+1.720.859.1737</a></li>
                 <li><i class="flaticon-pin"></i>1391 Oswego Street, Aurora CO 80010</li>
             </ul>
+            <!--
+                Placeholder destinations: no official IFOPAB social profiles have
+                been supplied yet, so these link to the main site rather than an
+                invented profile URL. Swap the href values once real profile
+                URLs are approved.
+            -->
+            <ul class="social-links pull-right clearfix">
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on Facebook"><i class="fab fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.ifopab.org" target="_blank" rel="noopener noreferrer" aria-label="IFOPAB on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
     </div>
 

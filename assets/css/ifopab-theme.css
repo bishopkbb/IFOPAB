@@ -33,19 +33,22 @@
     --ifopab-font-heading: 'Actay', 'Helvetica Neue', Arial, sans-serif;
     --ifopab-font-body: 'Actay', 'Helvetica Neue', Arial, sans-serif;
 
-    /* Persistent top contact bar */
-    --header-top-height: 40px;
+    /* Persistent top contact bar. This is a no-JS fallback only —
+       assets/js/ifopab-header.js measures the bar's real rendered height
+       at runtime and keeps this in sync, since content wrapping varies
+       by viewport in ways fixed breakpoint guesses can't track reliably. */
+    --header-top-height: 48px;
 }
 
 @media only screen and (max-width: 991px) {
     :root {
-        --header-top-height: 76px;
+        --header-top-height: 84px;
     }
 }
 
 @media only screen and (max-width: 480px) {
     :root {
-        --header-top-height: 96px;
+        --header-top-height: 128px;
     }
 }
 
@@ -63,29 +66,39 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--header-top-height);
+    min-height: var(--header-top-height);
     display: flex;
     align-items: center;
     background: var(--ifopab-primary);
     border-bottom: 1px solid color-mix(in srgb, var(--ifopab-primary) 80%, black);
+    padding: 10px 84px;
     z-index: 1001;
 }
 
 .header-top .top-inner {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 32px;
 }
 
 .header-top .info-list.pull-left {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px 28px;
+    gap: 10px 40px;
     float: none;
 }
 
 .header-top .info-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin: 0;
-    padding-left: 24px;
+    padding-left: 0;
+    font-size: 15px;
     color: var(--ifopab-text-on-dark);
 }
 
@@ -98,10 +111,36 @@
 }
 
 .header-top .info-list li i {
+    position: static;
+    font-size: 17px;
+    line-height: 1;
+    color: var(--ifopab-accent);
+}
+
+.header-top .social-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    float: none;
+}
+
+.header-top .social-links li a {
+    display: block;
+    color: var(--ifopab-text-on-dark);
+    font-size: 16px;
+    line-height: 1;
+    transition: color 200ms ease;
+}
+
+.header-top .social-links li a:hover {
     color: var(--ifopab-accent);
 }
 
 @media only screen and (max-width: 991px) {
+    .header-top .top-inner {
+        justify-content: center;
+    }
+
     .header-top .info-list.pull-left {
         justify-content: center;
         text-align: center;
@@ -110,18 +149,21 @@
 
 @media only screen and (max-width: 767px) {
     .header-top {
-        padding: 0 20px;
+        padding: 10px 20px;
     }
 }
 
 @media only screen and (max-width: 480px) {
     .header-top {
-        padding: 0 12px;
+        padding: 10px 12px;
     }
 
     .header-top .info-list li {
-        font-size: 12px;
-        padding-left: 20px;
+        font-size: 13px;
+    }
+
+    .header-top .info-list li i {
+        font-size: 15px;
     }
 }
 
