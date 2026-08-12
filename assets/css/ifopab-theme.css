@@ -225,11 +225,26 @@
     background: var(--ifopab-charcoal);
 }
 
-.main-header .sticky-header .theme-btn-one:before {
-    background: var(--ifopab-white);
+/* ---------------------------------------------------------------------
+   "Save the Date" header CTA
+   Scoped to the header CTA specifically (both the regular header and the
+   scroll-triggered sticky header share this markup path) rather than the
+   shared .theme-btn-one used elsewhere on the page — pill-shaped, turns
+   brand gold with blue text on hover. Reuses the template's existing
+   sweep-on-hover mechanic (the :before overlay) rather than rebuilding
+   it; overflow:hidden clips that sweep to the pill shape.
+   ------------------------------------------------------------------- */
+
+.main-header .menu-right-content .btn-box .theme-btn-one {
+    border-radius: 999px;
+    overflow: hidden;
 }
 
-.main-header .sticky-header .theme-btn-one:hover {
+.main-header .menu-right-content .btn-box .theme-btn-one:before {
+    background: var(--ifopab-accent);
+}
+
+.main-header .menu-right-content .btn-box .theme-btn-one:hover {
     color: var(--ifopab-primary) !important;
 }
 
