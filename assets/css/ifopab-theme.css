@@ -595,3 +595,107 @@ html {
         padding: 80px 0;
     }
 }
+
+/* ---------------------------------------------------------------------
+   What We Believe
+   Extends the calling-card language (rounded, blue border at rest, gold
+   fill/white text on hover) rather than a new card system — sized for
+   title+paragraph content instead of a single short phrase, and left-
+   aligned since body copy reads better that way than centered.
+   ------------------------------------------------------------------- */
+
+.beliefs-section {
+    padding: 120px 0;
+    background: var(--ifopab-background);
+}
+
+.beliefs-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.beliefs-intro {
+    max-width: 640px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.beliefs-intro p {
+    font-size: 18px;
+    color: var(--ifopab-text);
+}
+
+.beliefs-cards {
+    justify-content: center;
+}
+
+.belief-card-col {
+    margin-bottom: 30px;
+}
+
+.belief-card {
+    height: 100%;
+    background: var(--ifopab-surface);
+    border: 2px solid var(--ifopab-primary);
+    border-radius: 20px;
+    padding: 44px 36px;
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.belief-card:hover {
+    background: var(--ifopab-accent);
+    border-color: var(--ifopab-accent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
+}
+
+.belief-card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    transition: background 300ms ease, color 300ms ease;
+}
+
+.belief-card:hover .belief-card-number {
+    background: var(--ifopab-white);
+    color: var(--ifopab-primary);
+}
+
+.belief-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 14px;
+    transition: color 300ms ease;
+}
+
+.belief-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    margin: 0;
+    transition: color 300ms ease;
+}
+
+.belief-card:hover h3,
+.belief-card:hover p {
+    color: var(--ifopab-white);
+}
+
+@media only screen and (max-width: 767px) {
+    .beliefs-section {
+        padding: 80px 0;
+    }
+
+    .belief-card {
+        padding: 36px 26px;
+    }
+}

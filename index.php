@@ -15,7 +15,7 @@
         <?php include __DIR__ . '/sections/hero.php'; ?>
         <?php include __DIR__ . '/sections/introduction.php'; ?>
         <?php include __DIR__ . '/sections/vision.php'; ?>
-        <?php include __DIR__ . '/sections/service.php'; ?>
+        <?php include __DIR__ . '/sections/beliefs.php'; ?>
         <?php include __DIR__ . '/sections/agency.php'; ?>
         <?php include __DIR__ . '/sections/funfact.php'; ?>
         <?php include __DIR__ . '/sections/project.php'; ?>
