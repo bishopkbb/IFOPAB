@@ -183,11 +183,38 @@
     margin-top: var(--header-top-height);
 }
 
+/* Navbar stays solid white in both states — regular (non-scrolled,
+   transparent-over-hero originally) and the scroll-triggered sticky
+   header (brand blue originally, per an earlier request since reversed
+   here). Nav text, the mobile toggler, and the CTA all flip from their
+   white-on-photo / white-on-blue treatments to brand blue on white
+   consistently across both states. */
+.main-header.style-one .header-lower .outer-box {
+    background: var(--ifopab-white);
+    box-shadow: 0 4px 20px rgba(14, 95, 127, 0.08);
+}
+
 .main-header .sticky-header {
     top: var(--header-top-height);
-    background: var(--ifopab-primary);
+    background: var(--ifopab-white);
     border-bottom-color: var(--ifopab-accent);
+    box-shadow: 0 4px 20px rgba(14, 95, 127, 0.08);
 }
+
+.header-lower .main-menu .navigation > li > a,
+.sticky-header .main-menu .navigation > li > a {
+    color: var(--ifopab-primary);
+}
+
+.header-lower .menu-area .mobile-nav-toggler .icon-bar {
+    background-color: var(--ifopab-primary);
+}
+
+/* The sticky CTA's white-background/blue-text override (further below)
+   was built for a blue sticky bar, where the shared blue button would've
+   disappeared into it. Now that the sticky bar is white too, the shared
+   .theme-btn-one's default blue-on-white already has good contrast on
+   its own — no override needed there anymore. */
 
 /* Logo. The template had no dedicated sizing rule here — it relied on
    the demo logo file already being pre-sized small. The real IFOPAB
@@ -303,17 +330,6 @@
 
 .main-header .menu-right-content .btn-box .theme-btn-one:hover {
     color: var(--ifopab-white) !important;
-}
-
-/* The sticky header's own background is brand blue (below), which would
-   make the CTA's blue resting fill disappear into the bar behind it. Give
-   it a white resting fill there instead, with blue text for contrast.
-   Scoped with :not(:hover) rather than relying on rule order — this
-   selector and the :hover rule above tie in specificity, so without it
-   the winner would depend on source order instead of actual state. */
-.main-header .sticky-header .menu-right-content .btn-box .theme-btn-one:not(:hover) {
-    background: var(--ifopab-white);
-    color: var(--ifopab-primary) !important;
 }
 
 /* Scroll-to-top button — sitewide element, still the demo green from
