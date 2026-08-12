@@ -184,6 +184,7 @@
 
 .main-header .sticky-header {
     top: var(--header-top-height);
+    background: var(--ifopab-primary);
     border-bottom-color: var(--ifopab-accent);
 }
 
@@ -245,6 +246,17 @@
 }
 
 .main-header .menu-right-content .btn-box .theme-btn-one:hover {
+    color: var(--ifopab-white) !important;
+}
+
+/* The sticky header's own background is brand blue (below), which would
+   make the CTA's blue resting fill disappear into the bar behind it. Give
+   it a white resting fill there instead, with blue text for contrast.
+   Scoped with :not(:hover) rather than relying on rule order — this
+   selector and the :hover rule above tie in specificity, so without it
+   the winner would depend on source order instead of actual state. */
+.main-header .sticky-header .menu-right-content .btn-box .theme-btn-one:not(:hover) {
+    background: var(--ifopab-white);
     color: var(--ifopab-primary) !important;
 }
 
