@@ -219,14 +219,19 @@
 }
 
 /* ---------------------------------------------------------------------
-   Primary button (shared .theme-btn-one component — used by the nav CTA
-   today and by every future section's buttons). Resting state uses the
-   primary blue; the template's existing sweep-on-hover mechanic is kept,
-   just recoloured from the demo green to brand colours.
+   Primary button (shared .theme-btn-one component — used by every CTA on
+   the site). Pill-shaped per standing direction: all CTAs going forward
+   use this shape, so it lives on the base component rather than being
+   repeated per instance. overflow:hidden clips the existing sweep-on-
+   hover mechanic to the pill shape. Resting state uses the primary blue;
+   individual contexts (below) override where blue would blend into a
+   blue background.
    ------------------------------------------------------------------- */
 
 .theme-btn-one {
     background: var(--ifopab-primary);
+    border-radius: 999px;
+    overflow: hidden;
 }
 
 .theme-btn-one:before {
@@ -237,16 +242,9 @@
    "Save the Date" header CTA
    Scoped to the header CTA specifically (both the regular header and the
    scroll-triggered sticky header share this markup path) rather than the
-   shared .theme-btn-one used elsewhere on the page — pill-shaped, turns
-   brand gold with blue text on hover. Reuses the template's existing
-   sweep-on-hover mechanic (the :before overlay) rather than rebuilding
-   it; overflow:hidden clips that sweep to the pill shape.
+   shared .theme-btn-one used elsewhere on the page — turns brand gold
+   with white text on hover.
    ------------------------------------------------------------------- */
-
-.main-header .menu-right-content .btn-box .theme-btn-one {
-    border-radius: 999px;
-    overflow: hidden;
-}
 
 .main-header .menu-right-content .btn-box .theme-btn-one:before {
     background: var(--ifopab-accent);
@@ -305,5 +303,88 @@ html {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Hero
+   The template's original placeholder photos are back (client direction
+   — will be replaced with approved IFOPAB photography later). The dark
+   demo overlay is recoloured to a brand-blue tint instead of neutral
+   grey. Mixed toward transparent (not black) so it's genuine alpha
+   blending — the photo should stand out through the tint, not be
+   painted over by a near-opaque wash. Darkest on the text side for
+   legibility, fading out toward the image's focal subject.
+   ------------------------------------------------------------------- */
+
+.banner-carousel .slide-item:before {
+    background: linear-gradient(120deg, color-mix(in srgb, var(--ifopab-primary) 65%, transparent) 0%, color-mix(in srgb, var(--ifopab-primary) 35%, transparent) 50%, color-mix(in srgb, var(--ifopab-primary) 10%, transparent) 100%);
+}
+
+.banner-carousel .slide-item:after {
+    background: none;
+}
+
+.banner-carousel .content-box h1 {
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    line-height: 1.15;
+}
+
+.banner-carousel .content-box .eyebrow {
+    display: block;
+    color: var(--ifopab-accent);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 700ms ease;
+}
+
+.banner-carousel .active .content-box .eyebrow {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 400ms;
+}
+
+.banner-carousel .content-box p {
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* The hero overlay above is heavily blue-tinted, so the shared
+   .theme-btn-one's blue resting fill would blend into it too closely —
+   same issue as the sticky-header CTA. Gold draws the eye as the hero's
+   one primary action; hover sweeps to white with the (already-blue) text
+   unchanged, rather than a jarring colour flip. */
+.banner-carousel .content-box .btn-box .theme-btn-one {
+    background: var(--ifopab-accent);
+    color: var(--ifopab-primary) !important;
+}
+
+.banner-carousel .content-box .btn-box .theme-btn-one:before {
+    background: var(--ifopab-white);
+}
+
+.banner-carousel .content-box .btn-box .theme-btn-one:hover {
+    color: var(--ifopab-primary) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-carousel .slide-item .image-layer,
+    .banner-carousel .active .slide-item .image-layer,
+    .banner-carousel .content-box h1,
+    .banner-carousel .content-box p,
+    .banner-carousel .content-box .btn-box,
+    .banner-carousel .content-box .eyebrow,
+    .banner-carousel .active .content-box h1,
+    .banner-carousel .active .content-box p,
+    .banner-carousel .active .content-box .btn-box,
+    .banner-carousel .active .content-box .eyebrow {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
     }
 }
