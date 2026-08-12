@@ -211,6 +211,13 @@
     color: var(--ifopab-accent);
 }
 
+/* Mobile menu backdrop: a dimming scrim behind the slide-out panel should
+   be a neutral dark tone, not a bright brand colour washed over the whole
+   page at 70% opacity (the demo used solid green). */
+.mobile-menu .menu-backdrop {
+    background: var(--ifopab-charcoal);
+}
+
 /* ---------------------------------------------------------------------
    Primary button (shared .theme-btn-one component — used by the nav CTA
    today and by every future section's buttons). Resting state uses the
