@@ -809,7 +809,7 @@ html {
 .gathering-section .gathering-invite {
     max-width: 620px;
     margin: 0 auto;
-    color: var(--ifopab-text-on-dark-muted);
+    color: var(--ifopab-white);
     font-size: 18px;
     line-height: 1.7;
 }
