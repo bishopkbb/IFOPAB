@@ -361,12 +361,14 @@
 }
 
 /* ---------------------------------------------------------------------
-   Anchor scrolling foundation
-   The one-page nav below links to section IDs that don't exist yet
-   (#vision, #beliefs, etc. — those sections haven't been built). Smooth
-   scrolling is safe to establish now; the scroll-margin-top offset that
-   accounts for the fixed header stack is deferred until real sections
-   exist and can be checked visually rather than guessed.
+   Anchor scrolling
+   scroll-margin-top clears the fixed header stack (top bar + sticky
+   nav) when a section is reached via anchor — confirmed necessary once
+   #gathering existed to actually scroll to (the heading was rendering
+   half-hidden behind the header without it). The px fallback here is a
+   reasonable no-JS estimate; assets/js/ifopab-header.js measures the
+   real combined height and keeps --header-stack-offset in sync, same
+   pattern as --header-top-height.
    ------------------------------------------------------------------- */
 
 html {
@@ -377,6 +379,22 @@ html {
     html {
         scroll-behavior: auto;
     }
+}
+
+:root {
+    --header-stack-offset: 190px;
+}
+
+#home,
+#calling,
+#vision,
+#beliefs,
+#gathering,
+#attend,
+#future,
+#save-the-date,
+#journey {
+    scroll-margin-top: var(--header-stack-offset);
 }
 
 /* ---------------------------------------------------------------------
@@ -758,5 +776,168 @@ html {
 
     .belief-card {
         padding: 36px 26px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Our Inaugural Gathering
+   "Strong visual treatment" per docs/03 section 58's background rhythm
+   — dark brand blue, the page's central highlight moment, distinct from
+   the light Vision/Beliefs sections around it. Date/location are
+   intentional TBD states styled with the same visual weight as
+   confirmed information (docs/03 section 33), not a warning/error look.
+   Pillars use an open editorial-column treatment rather than bordered
+   cards, per docs/03 section 31's "stronger visual treatment than the
+   belief cards" — reusing the same card language here would blur the
+   two sections together instead of distinguishing this one.
+   ------------------------------------------------------------------- */
+
+.gathering-section {
+    padding: 130px 0;
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+}
+
+.gathering-section .sec-title h2 {
+    color: var(--ifopab-white);
+    font-family: var(--ifopab-font-heading);
+}
+
+/* .gathering-section prefix needed: color.css's .sec-title p (a class+
+   type selector, specificity 0-1-1) otherwise beats a bare
+   .gathering-invite class (0-1-0) regardless of load order, leaving the
+   demo green instead of this. */
+.gathering-section .gathering-invite {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.gathering-meta {
+    max-width: 620px;
+    margin: 56px auto 0;
+    justify-content: center;
+}
+
+.gathering-meta-item {
+    text-align: center;
+    padding: 0 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gathering-meta-col:first-child .gathering-meta-item {
+    border-left: none;
+}
+
+.gathering-meta-label {
+    display: block;
+    color: var(--ifopab-accent);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.gathering-meta-value {
+    display: block;
+    color: var(--ifopab-white);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.gathering-description {
+    max-width: 680px;
+    margin: 48px auto 0;
+    text-align: center;
+}
+
+.gathering-description p {
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.gathering-pillars {
+    margin-top: 70px;
+    justify-content: center;
+}
+
+.gathering-pillar-col {
+    margin-bottom: 40px;
+}
+
+.gathering-pillar {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.gathering-pillar-number {
+    display: block;
+    color: var(--ifopab-accent);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.gathering-pillar h3 {
+    color: var(--ifopab-white);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.gathering-pillar p {
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* "Coming soon" state — calm, intentional, not an error (docs/03
+   section 34). Gold outline rather than a filled badge so it doesn't
+   compete with the pillars above it. */
+.gathering-program-note {
+    max-width: 420px;
+    margin: 60px auto 0;
+    text-align: center;
+    border: 1px solid rgba(230, 172, 76, 0.4);
+    border-radius: 16px;
+    padding: 24px 28px;
+}
+
+.gathering-program-note span {
+    display: block;
+    color: var(--ifopab-accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.gathering-program-note p {
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 15px;
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .gathering-section {
+        padding: 80px 0;
+    }
+
+    .gathering-meta-col {
+        margin-bottom: 24px;
+    }
+
+    .gathering-meta-item {
+        border-left: none;
+    }
+
+    .gathering-meta-value {
+        font-size: 26px;
     }
 }
