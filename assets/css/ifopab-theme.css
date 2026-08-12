@@ -486,7 +486,7 @@ html {
     align-items: center;
     justify-content: center;
     background: var(--ifopab-surface);
-    border: 2px solid var(--ifopab-accent);
+    border: 2px solid var(--ifopab-primary);
     border-radius: 20px;
     padding: 44px 30px;
     text-align: center;
@@ -495,7 +495,7 @@ html {
 
 .calling-card:hover {
     background: var(--ifopab-accent);
-    border-color: var(--ifopab-primary);
+    border-color: var(--ifopab-accent);
     transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
 }
@@ -545,5 +545,53 @@ html {
 
     .calling-card {
         padding: 36px 24px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Our Vision
+   Reuses the template's image_block_1/content_block_1 components (kept
+   the class names specifically so their existing overlap/hover polish
+   carries over for free rather than re-implementing it). Alternate
+   surface background for section rhythm against the white calling
+   section above it. The section's own padding is redeclared since the
+   original .about-section class isn't used here.
+   ------------------------------------------------------------------- */
+
+.vision-section {
+    position: relative;
+    padding: 120px 0;
+    background: var(--ifopab-surface);
+}
+
+.vision-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.vision-section .content_block_1 .content-box .text p {
+    color: var(--ifopab-text);
+}
+
+.vision-closing {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--ifopab-primary);
+    margin-bottom: 12px;
+}
+
+.vision-closing:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Decorative bar under the first image — demo green from color.css. */
+.image_block_1 .image-box .image-1:before {
+    background: var(--ifopab-primary);
+}
+
+@media only screen and (max-width: 767px) {
+    .vision-section {
+        padding: 80px 0;
     }
 }
