@@ -9,28 +9,10 @@
     <div class="header-top">
         <div class="top-inner clearfix">
             <ul class="info-list pull-left clearfix">
-                <li><i class="flaticon-email"></i><a href="mailto:needhelp@example.com">needhelp@example.com</a></li>
-                <li><i class="flaticon-telephone"></i><a href="tel:928886660000">92 888 666 0000</a></li>
-                <li><i class="flaticon-pin"></i>Suite 20 Golden Street USA</li>
+                <li><i class="flaticon-email"></i><a href="mailto:info@ifopab.org">info@ifopab.org</a></li>
+                <li><i class="flaticon-telephone"></i><a href="tel:+17208591737">+1.720.859.1737</a></li>
+                <li><i class="flaticon-pin"></i>1391 Oswego Street, Aurora CO 80010</li>
             </ul>
-            <div class="right-column pull-right clearfix">
-                <ul class="social-links clearfix">
-                    <li><a href="index.html"><i class="fab fa-facebook-square"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-pinterest-p"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-                <div class="language-box">
-                    <img src="assets/images/icons/flag-1.png" alt="">
-                    <a href="index.html" class="text">English</a>
-                    <ul class="language-list">
-                        <li><a href="index.html">English</a></li>
-                        <li><a href="index.html">Spanish</a></li>
-                        <li><a href="index.html">Turky</a></li>
-                        <li><a href="index.html">Chiness</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -123,9 +105,9 @@
         <div class="contact-info">
             <h4>Contact Info</h4>
             <ul>
-                <li>Chicago 12, Melborne City, USA</li>
-                <li><a href="tel:+8801682648101">+88 01682648101</a></li>
-                <li><a href="mailto:info@example.com">info@example.com</a></li>
+                <li>1391 Oswego Street, Aurora CO 80010</li>
+                <li><a href="tel:+17208591737">+1.720.859.1737</a></li>
+                <li><a href="mailto:info@ifopab.org">info@ifopab.org</a></li>
             </ul>
         </div>
         <div class="social-links">

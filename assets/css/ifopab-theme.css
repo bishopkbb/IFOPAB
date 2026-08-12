@@ -1,0 +1,134 @@
+/**
+ * IFOPAB brand tokens and overrides.
+ *
+ * Source: docs/ifopab brand.pdf (approved). Loaded after the template's
+ * own stylesheets so these rules win the cascade without !important.
+ *
+ * Colour values are the approved brand hexes verbatim. Hover/active shades
+ * are derived at render time via color-mix() rather than hard-coded, so no
+ * new "brand colour" is being invented — only interaction-state variants
+ * of the approved ones.
+ */
+
+:root {
+    /* Brand colours */
+    --ifopab-primary: #0E5F7F;   /* Deep Blue */
+    --ifopab-accent: #E6AC4C;    /* Warm Gold */
+    --ifopab-white: #FFFFFF;
+    --ifopab-gray: #B3B3B3;      /* Soft Gray */
+    --ifopab-charcoal: #4A4A4A;
+
+    /* Semantic tokens */
+    --ifopab-text: var(--ifopab-charcoal);
+    --ifopab-text-muted: var(--ifopab-gray);
+    --ifopab-text-on-dark: rgba(255, 255, 255, 0.92);
+    --ifopab-background: var(--ifopab-white);
+    --ifopab-surface: #F5F7F8;
+    --ifopab-border: rgba(74, 74, 74, 0.15);
+
+    /* Typography — Actay is the approved brand typeface (Light / Regular /
+       WideBold per the brand PDF). No licensed font files have been supplied
+       yet, so it leads the stack with safe system fallbacks until the
+       client provides the actual font files to self-host. */
+    --ifopab-font-heading: 'Actay', 'Helvetica Neue', Arial, sans-serif;
+    --ifopab-font-body: 'Actay', 'Helvetica Neue', Arial, sans-serif;
+
+    /* Persistent top contact bar */
+    --header-top-height: 40px;
+}
+
+@media only screen and (max-width: 991px) {
+    :root {
+        --header-top-height: 76px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    :root {
+        --header-top-height: 96px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Persistent top contact bar
+   Always fixed (not just on scroll) so it remains visible throughout —
+   per docs/00 section 17. The nav/logo bar below it is pushed down to
+   compensate, and the template's existing scroll-triggered .sticky-header
+   is re-anchored to sit directly beneath it rather than at the very top,
+   so the two layers stack without overlapping.
+   ------------------------------------------------------------------- */
+
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-top-height);
+    display: flex;
+    align-items: center;
+    background: var(--ifopab-primary);
+    border-bottom: 1px solid color-mix(in srgb, var(--ifopab-primary) 80%, black);
+    z-index: 1001;
+}
+
+.header-top .top-inner {
+    width: 100%;
+}
+
+.header-top .info-list.pull-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 28px;
+    float: none;
+}
+
+.header-top .info-list li {
+    margin: 0;
+    padding-left: 24px;
+    color: var(--ifopab-text-on-dark);
+}
+
+.header-top .info-list li a {
+    color: var(--ifopab-text-on-dark);
+}
+
+.header-top .info-list li a:hover {
+    color: var(--ifopab-accent);
+}
+
+.header-top .info-list li i {
+    color: var(--ifopab-accent);
+}
+
+@media only screen and (max-width: 991px) {
+    .header-top .info-list.pull-left {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .header-top {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .header-top {
+        padding: 0 12px;
+    }
+
+    .header-top .info-list li {
+        font-size: 12px;
+        padding-left: 20px;
+    }
+}
+
+.main-header .header-lower {
+    margin-top: var(--header-top-height);
+}
+
+.main-header .sticky-header {
+    top: var(--header-top-height);
+}

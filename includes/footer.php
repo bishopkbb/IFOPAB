@@ -7,21 +7,21 @@
                     <div class="inner">
                         <div class="icon-box"><i class="flaticon-mail"></i></div>
                         <h6>Email</h6>
-                        <p><a href="mailto:needhelp@example.com">needhelp@example.com</a></p>
+                        <p><a href="mailto:info@ifopab.org">info@ifopab.org</a></p>
                     </div>
                 </div>
                 <div class="single-item">
                     <div class="inner">
                         <div class="icon-box"><i class="flaticon-phone"></i></div>
                         <h6>Call</h6>
-                        <p><a href="tel:928886660000">+ 92 888 666 0000</a></p>
+                        <p><a href="tel:+17208591737">+1.720.859.1737</a></p>
                     </div>
                 </div>
                 <div class="single-item">
                     <div class="inner">
                         <div class="icon-box"><i class="flaticon-address"></i></div>
                         <h6>Address</h6>
-                        <p>Suite 20 Golden Street USA</p>
+                        <p>1391 Oswego Street, Aurora CO 80010</p>
                     </div>
                 </div>
             </div>
