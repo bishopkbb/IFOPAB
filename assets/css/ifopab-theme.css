@@ -941,3 +941,70 @@ html {
         font-size: 26px;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Who Should Attend
+   Light background, back from the Inaugural Gathering section's dark
+   treatment. Audience tags let a visitor self-identify at a glance
+   before reading the full sentence — not new content, just the same
+   audience list from the approved copy pulled into its own visual row.
+   ------------------------------------------------------------------- */
+
+.attend-section {
+    padding: 120px 0;
+    background: var(--ifopab-background);
+}
+
+.attend-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.attend-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 0 0 44px;
+}
+
+.attend-tags li {
+    background: var(--ifopab-surface);
+    border: 1px solid var(--ifopab-primary);
+    border-radius: 999px;
+    padding: 10px 22px;
+    color: var(--ifopab-primary);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.attend-copy {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.attend-copy p {
+    color: var(--ifopab-text);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.attend-note {
+    max-width: 480px;
+    margin: 36px auto 0;
+    text-align: center;
+}
+
+.attend-note p {
+    color: var(--ifopab-text-muted);
+    font-size: 15px;
+    font-style: italic;
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .attend-section {
+        padding: 80px 0;
+    }
+}
