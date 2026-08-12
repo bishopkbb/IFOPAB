@@ -189,6 +189,51 @@
     border-bottom-color: var(--ifopab-accent);
 }
 
+/* Logo. The template had no dedicated sizing rule here — it relied on
+   the demo logo file already being pre-sized small. The real IFOPAB
+   logo (assets/images/logo.png) is a full-resolution stacked lockup
+   (icon over wordmark, ~1409x1260), so it needs an explicit cap to sit
+   correctly in the header rather than rendering at native size. Smaller
+   in the sticky header, which is meant to be a slim compact bar.
+
+   The logo's own blue reads poorly against both header backgrounds
+   (header-lower sits transparently over the blue-tinted hero; the
+   sticky header is solid brand blue) — the wordmark all but disappears.
+   Kept full colour (a white-silhouette treatment was tried and reverted)
+   and given a white backdrop plate sized to the logo instead, so it
+   always sits on white regardless of what's behind the header. Rounded
+   rather than sharp, matching the corner language used everywhere else. */
+.logo-box .logo {
+    display: inline-flex;
+    align-items: center;
+    background: var(--ifopab-white);
+    border-radius: 16px;
+    padding: 8px 16px;
+}
+
+.logo-box .logo img {
+    max-height: 76px;
+    width: auto;
+}
+
+.sticky-header .logo-box .logo {
+    padding: 6px 12px;
+}
+
+.sticky-header .logo-box .logo img {
+    max-height: 54px;
+}
+
+@media only screen and (max-width: 480px) {
+    .logo-box .logo {
+        padding: 6px 12px;
+    }
+
+    .logo-box .logo img {
+        max-height: 58px;
+    }
+}
+
 /* ---------------------------------------------------------------------
    Navigation
    The template's active/hover underline used a green demo shape image
