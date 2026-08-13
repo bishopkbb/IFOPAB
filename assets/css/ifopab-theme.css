@@ -1061,3 +1061,89 @@ html {
         padding: 80px 0;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Save the Date
+   "One of the strongest visual sections... should resemble an event
+   invitation" per docs/02 section 31. Charcoal rather than the
+   Gathering section's blue, so the two dark sections read as distinct
+   moments rather than repeating the same treatment twice. A bordered
+   card creates the "invitation" feel rather than a plain content block.
+   TBD/Antigua use the exact approved public block (docs/04 section 17)
+   — not "October 2027", which the design doc offers only as a softer
+   alternative, not the confirmed content.
+   ------------------------------------------------------------------- */
+
+.save-the-date-section {
+    padding: 140px 0;
+    background: linear-gradient(160deg, var(--ifopab-charcoal) 0%, #202020 100%);
+}
+
+.save-the-date-card {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid rgba(230, 172, 76, 0.4);
+    border-radius: 24px;
+    padding: 70px 50px;
+}
+
+.save-the-date-eyebrow {
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.save-the-date-label {
+    color: var(--ifopab-white);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.save-the-date-value {
+    color: var(--ifopab-accent);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: var(--ifopab-font-heading);
+}
+
+.save-the-date-location {
+    color: var(--ifopab-white);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.save-the-date-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(230, 172, 76, 0.4);
+    margin: 36px auto;
+}
+
+.save-the-date-supporting {
+    color: var(--ifopab-text-on-dark-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .save-the-date-section {
+        padding: 90px 0;
+    }
+
+    .save-the-date-card {
+        padding: 50px 28px;
+    }
+}
