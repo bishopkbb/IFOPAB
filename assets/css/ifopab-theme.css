@@ -118,23 +118,60 @@
     color: var(--ifopab-accent);
 }
 
+/* X has no glyph in the loaded icon font (only the old bird-logo
+   fa-twitter), so the exact logo mark is inlined as SVG (fill:
+   currentColor, so it picks up colour the same way the icon-font
+   glyphs around it do) rather than approximated with a plain letter. */
+.social-x {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+}
+
 .header-top .social-links {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 10px;
     float: none;
 }
 
 .header-top .social-links li a {
-    display: block;
-    color: var(--ifopab-text-on-dark);
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ifopab-white);
+    font-size: 15px;
     line-height: 1;
-    transition: color 200ms ease;
+    transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .header-top .social-links li a:hover {
-    color: var(--ifopab-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.header-top .social-links li a .fa-facebook-square {
+    color: #1877f2;
+}
+
+.header-top .social-links li a .fa-youtube {
+    color: #ff0000;
+}
+
+.header-top .social-links li a .fa-instagram {
+    background: linear-gradient(45deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.header-top .social-links li a .social-x {
+    color: #000;
+    font-size: 14px;
 }
 
 /* .clearfix's ::after becomes a real (if empty) flex item once its parent
@@ -289,11 +326,127 @@
     color: var(--ifopab-accent);
 }
 
+/* Gathering's dropdown submenu (desktop): brand blue background,
+   white text at rest, gold on hover — same resting/hover colour
+   language as the primary CTA buttons.
+
+   The template's default (left: inherit, width 250px, 30px li padding
+   stacked on top of the link's own padding) left the panel offset well
+   right of "Gathering" itself, reading as a disconnected floating box
+   rather than its dropdown. Centred under the trigger instead, and the
+   dated rotateX 3D-flip reveal (which never fully closed the vertical
+   gap and made the open state look detached) is replaced with a plain
+   fade + rise — flush against the header (top: 100%, no dead zone that
+   would drop the :hover state between link and panel) and visually
+   anchored to its parent. */
+.main-menu .navigation > li.dropdown {
+    /* Template default is `position: inherit`, which resolves to
+       `static` here — so the dropdown's `left: 50%` was centering
+       against the viewport instead of this item, landing the panel
+       nowhere near "Gathering". Needs an explicit positioning context. */
+    position: relative;
+}
+
+.main-menu .navigation > li.dropdown > ul {
+    left: 50%;
+    right: auto;
+    top: 100%;
+    width: 260px;
+    background: var(--ifopab-primary);
+    border-radius: 12px;
+    box-shadow: 0 16px 32px rgba(14, 95, 127, 0.2);
+    padding: 8px 0;
+    transform: translateX(-50%) translateY(8px);
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
+}
+
+.main-menu .navigation > li.dropdown:hover > ul {
+    transform: translateX(-50%) translateY(0);
+}
+
+.main-menu .navigation > li > ul > li {
+    padding: 0 6px;
+}
+
+.main-menu .navigation > li > ul > li > a {
+    color: var(--ifopab-white);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+    padding: 12px 18px;
+}
+
+.main-menu .navigation > li > ul > li > a:hover {
+    color: var(--ifopab-accent);
+}
+
+.main-menu .navigation > li > ul > li:last-child > a {
+    border-bottom: none;
+}
+
 /* Mobile menu backdrop: a dimming scrim behind the slide-out panel should
    be a neutral dark tone, not a bright brand colour washed over the whole
    page at 70% opacity (the demo used solid green). */
 .mobile-menu .menu-backdrop {
     background: var(--ifopab-charcoal);
+}
+
+/* Mobile menu logo: same white backdrop plate as the header logo (the
+   full-colour wordmark reads poorly against the mobile panel's dark
+   background otherwise), sized down from native resolution. */
+.mobile-menu .nav-logo {
+    padding: 40px 25px 30px;
+}
+
+.mobile-menu .nav-logo a {
+    display: inline-flex;
+    background: var(--ifopab-white);
+    border-radius: 14px;
+    padding: 8px 14px;
+}
+
+.mobile-menu .nav-logo img {
+    max-height: 48px;
+    width: auto;
+}
+
+/* Same white circle-badge, brand-colour treatment as the header-top bar
+   and footer, sized for the mobile panel's dark background. */
+.mobile-menu .social-links li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ifopab-white);
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.mobile-menu .social-links li a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu .social-links li a .fa-facebook-square {
+    color: #1877f2;
+}
+
+.mobile-menu .social-links li a .fa-youtube {
+    color: #ff0000;
+}
+
+.mobile-menu .social-links li a .fa-instagram {
+    background: linear-gradient(45deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.mobile-menu .social-links li a .social-x {
+    color: #000;
+    font-size: 15px;
 }
 
 /* ---------------------------------------------------------------------
@@ -389,11 +542,12 @@ html {
 #calling,
 #vision,
 #beliefs,
+#team,
 #gathering,
 #attend,
 #future,
-#save-the-date,
-#journey {
+#journey,
+#contact {
     scroll-margin-top: var(--header-stack-offset);
 }
 
@@ -415,6 +569,7 @@ html {
 .banner-carousel .slide-item:after {
     background: none;
 }
+
 
 .banner-carousel .content-box h1 {
     font-size: clamp(2.25rem, 4.5vw, 4rem);
@@ -466,6 +621,16 @@ html {
     color: var(--ifopab-primary) !important;
 }
 
+/* Slider prev/next arrows — demo green hover fill (color.css) recoloured
+   to brand blue. Icon glyph flips to white on hover too: its resting
+   dark-charcoal colour (style.css) is too low-contrast against the new
+   blue fill otherwise. */
+.banner-carousel .owl-nav .owl-prev:hover,
+.banner-carousel .owl-nav .owl-next:hover {
+    background: var(--ifopab-primary);
+    color: var(--ifopab-white);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .banner-carousel .slide-item .image-layer,
     .banner-carousel .active .slide-item .image-layer,
@@ -500,14 +665,36 @@ html {
 /* ---------------------------------------------------------------------
    Calling / Introduction ("To the Men and Women Who Answer the Call.")
    First real IFOPAB narrative section — light background per the design
-   doc's section-rhythm guidance (hero dark, calling light). Content
-   width constrained for readability rather than stretching the full
-   1200px container.
+   doc's section-rhythm guidance (hero dark, calling light). Image +
+   content layout (see sections/introduction.php for why about-1.jpg):
+   content column carries the narrative and a checklist of the five
+   short lines; the image sits in an offset gold panel frame, the same
+   "premium layered card" treatment used nowhere else on the page yet,
+   reserved for this section as the page's first real narrative beat.
    ------------------------------------------------------------------- */
 
 .calling-section {
     padding: 130px 0;
     background: var(--ifopab-background);
+}
+
+.calling-content .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 24px;
+}
+
+/* Purely decorative accent rule — no invented copy, just an editorial
+   marker above the heading. */
+.calling-content .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
 }
 
 .calling-section .sec-title h2 {
@@ -517,99 +704,165 @@ html {
     font-family: var(--ifopab-font-heading);
 }
 
-/* Flowing narrative text stays in a readable column; the card grid below
-   uses the full container width instead. */
-.calling-intro,
-.calling-body,
-.calling-closing {
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+/* Two-column layout reads left-aligned; the old centred single-column
+   treatment (max-width + auto margins + centre text) no longer applies. */
+.calling-content .calling-intro,
+.calling-content .calling-body,
+.calling-content .calling-closing {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.calling-intro p,
-.calling-body p {
+.calling-content .calling-intro p,
+.calling-content .calling-body p {
     font-size: 18px;
     line-height: 1.7;
     color: var(--ifopab-text);
-    text-align: center;
-    margin-bottom: 24px;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
-.calling-closing {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--ifopab-primary);
-    margin-top: 40px;
-    margin-bottom: 0;
-}
-
-/* Card grid for the five calling statements. Soft, rounded surfaces
-   (no sharp edges, per request) rather than the plain stacked list this
-   replaced. */
-.calling-cards {
-    margin: 56px 0;
-    justify-content: center;
-}
-
-.calling-card-col {
-    margin-bottom: 30px;
-}
-
-.calling-card {
-    height: 100%;
-    min-height: 230px;
+/* Checklist for the five short lines — replaces the card grid. Circular
+   check badges reuse the icon-in-circle language already established
+   (contact-card-icon, belief/calling-card numbers) rather than a new
+   bullet system. */
+.calling-checklist {
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    margin: 8px 0 32px;
+    padding: 0;
+}
+
+.calling-checklist li {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    background: var(--ifopab-surface);
-    border: 2px solid var(--ifopab-primary);
-    border-radius: 20px;
-    padding: 44px 30px;
-    text-align: center;
-    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    gap: 16px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
 }
 
-.calling-card:hover {
-    background: var(--ifopab-accent);
-    border-color: var(--ifopab-accent);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
-}
-
-.calling-card-number {
+.calling-check {
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
-    color: var(--ifopab-primary);
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    transition: background 300ms ease, color 300ms ease;
-}
-
-.calling-card:hover .calling-card-number {
-    background: var(--ifopab-white);
-    color: var(--ifopab-primary);
-}
-
-.calling-card p {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--ifopab-primary);
-    margin: 0;
-    transition: color 300ms ease;
-}
-
-.calling-card:hover p {
+    background: var(--ifopab-accent);
     color: var(--ifopab-white);
+    font-size: 12px;
+}
+
+/* Closing line gets a pull-quote treatment (left border) to carry the
+   rhetorical weight of the section's payoff sentence. */
+.calling-closing {
+    position: relative;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-top: 36px;
+    margin-bottom: 0;
+    padding-left: 22px;
+    border-left: 4px solid var(--ifopab-accent);
+}
+
+/* Image: offset gold panel behind a rounded, shadowed portrait — a
+   "premium layered card" frame rather than a plain photo, and visually
+   distinct from Vision's two-overlapping-photo treatment below it.
+   Panel and photo reveal on separate wow triggers (panel first, photo
+   pops in after) for a choreographed depth entrance, then the whole
+   group drifts in a slow continuous float — a still frame would feel
+   flat next to the animated checklist beside it. Hovering the photo
+   gives it a gentle zoom, the one interactive touch in the section. */
+.calling-visual {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: callingFloat 6s ease-in-out infinite;
+}
+
+.calling-visual-panel {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    right: -28px;
+    bottom: -28px;
+    background: linear-gradient(160deg, var(--ifopab-accent) 0%, color-mix(in srgb, var(--ifopab-accent) 65%, var(--ifopab-primary)) 100%);
+    border-radius: 24px;
+    z-index: 1;
+}
+
+.calling-visual-image {
+    position: relative;
+    z-index: 2;
+    display: block;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -10px rgba(14, 95, 127, 0.35);
+}
+
+.calling-visual-image img {
+    display: block;
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    transition: transform 600ms ease;
+}
+
+.calling-visual:hover .calling-visual-image img {
+    transform: scale(1.05);
+}
+
+@keyframes callingFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes callingPopIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.92) translateY(26px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.callingPopIn {
+    animation-name: callingPopIn;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .calling-visual {
+        animation: none;
+    }
+
+    .calling-visual:hover .calling-visual-image img {
+        transform: none;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .calling-image-column {
+        order: -1;
+        margin-bottom: 50px;
+    }
+
+    .calling-visual {
+        max-width: 400px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -617,13 +870,24 @@ html {
         padding: 80px 0;
     }
 
-    .calling-intro p,
-    .calling-body p {
+    .calling-content .calling-intro p,
+    .calling-content .calling-body p {
         font-size: 16px;
     }
 
-    .calling-card {
-        padding: 36px 24px;
+    .calling-checklist li {
+        font-size: 17px;
+    }
+
+    .calling-visual-image img {
+        height: 420px;
+    }
+
+    .calling-visual-panel {
+        top: 18px;
+        left: 18px;
+        right: -18px;
+        bottom: -18px;
     }
 }
 
@@ -643,6 +907,26 @@ html {
     background: var(--ifopab-surface);
 }
 
+/* Same gold accent-rule marker used above the Calling heading — a
+   consistent editorial signature carried across the page rather than
+   a one-off. */
+.vision-section .content_block_1 .content-box .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 24px;
+}
+
+.vision-section .content_block_1 .content-box .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+}
+
 .vision-section .sec-title h2 {
     color: var(--ifopab-primary);
     font-family: var(--ifopab-font-heading);
@@ -650,6 +934,17 @@ html {
 
 .vision-section .content_block_1 .content-box .text p {
     color: var(--ifopab-text);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Closing pair reads as one pull-quote group (shared left border)
+   rather than two disconnected bold lines — same treatment as the
+   Calling section's closing statement. */
+.vision-closing-group {
+    margin-top: 32px;
+    padding-left: 22px;
+    border-left: 4px solid var(--ifopab-accent);
 }
 
 .vision-closing {
@@ -657,21 +952,89 @@ html {
     font-weight: 700;
     line-height: 1.6;
     color: var(--ifopab-primary);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .vision-closing:last-of-type {
     margin-bottom: 0;
 }
 
-/* Decorative bar under the first image — demo green from color.css. */
-.image_block_1 .image-box .image-1:before {
-    background: var(--ifopab-primary);
+/* Image pair facelift: rounded corners and soft elevation replace the
+   template's sharp-cornered default, a decorative offset panel (brand
+   blue — Calling's equivalent panel is gold, so the two sections rhyme
+   without repeating) peeks from behind the top-left corner, and the
+   dated skew "shine" hover sweep is dropped in favour of a clean
+   synchronized zoom. Photos reveal on a stagger: the larger photo
+   slides in first, the overlapping one pops in after — same
+   choreographed-depth idea as the Calling section's panel/photo
+   sequence, applied to two photos instead of one.
+   ------------------------------------------------------------------- */
+
+.vision-section .image_block_1 .image-box {
+    position: relative;
+}
+
+.vision-section .image_block_1 .image-box:before {
+    content: '';
+    position: absolute;
+    top: -22px;
+    left: -22px;
+    width: 62%;
+    height: 55%;
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 55%, black) 100%);
+    border-radius: 24px;
+    z-index: 0;
+}
+
+.vision-section .image_block_1 .image-box .image-1,
+.vision-section .image_block_1 .image-box .image-2 {
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 24px 50px -12px rgba(14, 95, 127, 0.32);
+}
+
+.vision-section .image_block_1 .image-box .image-1 img,
+.vision-section .image_block_1 .image-box .image-2 img {
+    border-radius: 20px;
+    transition: transform 600ms ease;
+}
+
+.vision-section .image_block_1 .image-box .image-2 {
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 16px 34px -10px rgba(14, 95, 127, 0.3);
+}
+
+.vision-section .image_block_1 .image-box .image-2 img {
+    border-radius: 10px;
+}
+
+.vision-section .image_block_1 .image-box:hover .image-1 img,
+.vision-section .image_block_1 .image-box:hover .image-2 img {
+    transform: scale(1.06);
+}
+
+/* Dated skew-shine hover sweep replaced by the zoom above. */
+.image_block_1 .image-box .image-1:before,
+.image_block_1 .image-box .image-1:after {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vision-section .image_block_1 .image-box:hover .image-1 img,
+    .vision-section .image_block_1 .image-box:hover .image-2 img {
+        transform: none;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     .vision-section {
         padding: 80px 0;
+    }
+
+    .vision-section .image_block_1 .image-box:before {
+        top: -14px;
+        left: -14px;
     }
 }
 
@@ -688,6 +1051,24 @@ html {
     background: var(--ifopab-background);
 }
 
+.beliefs-section .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 18px;
+}
+
+.beliefs-section .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+}
+
 .beliefs-section .sec-title h2 {
     color: var(--ifopab-primary);
     font-family: var(--ifopab-font-heading);
@@ -695,7 +1076,7 @@ html {
 
 .beliefs-intro {
     max-width: 640px;
-    margin: 0 auto 50px;
+    margin: 0 auto 26px;
     text-align: center;
 }
 
@@ -704,42 +1085,62 @@ html {
     color: var(--ifopab-text);
 }
 
+/* All five cards stay in a single row (per request) via CSS grid rather
+   than Bootstrap's 12-column split. Desktop divides the row evenly;
+   narrower viewports keep the row and scroll horizontally with snap
+   instead of wrapping, so "one row" holds at every size. */
 .beliefs-cards {
-    justify-content: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 22px;
 }
 
-.belief-card-col {
-    margin-bottom: 30px;
+@media only screen and (max-width: 1199px) {
+    .beliefs-cards {
+        grid-auto-columns: minmax(240px, 1fr);
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        padding-bottom: 14px;
+        margin-bottom: -14px;
+    }
+
+    .belief-card-col {
+        scroll-snap-align: start;
+    }
 }
 
 .belief-card {
     height: 100%;
+    display: flex;
+    flex-direction: column;
     background: var(--ifopab-surface);
     border: 2px solid var(--ifopab-primary);
-    border-radius: 20px;
-    padding: 44px 36px;
+    border-radius: 18px;
+    padding: 32px 26px;
+    box-shadow: 0 10px 24px rgba(14, 95, 127, 0.06);
     transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
 }
 
 .belief-card:hover {
     background: var(--ifopab-accent);
     border-color: var(--ifopab-accent);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 44px rgba(14, 95, 127, 0.2);
 }
 
 .belief-card-number {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
     color: var(--ifopab-primary);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
     transition: background 300ms ease, color 300ms ease;
 }
 
@@ -749,16 +1150,17 @@ html {
 }
 
 .belief-card h3 {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1.3;
     font-weight: 700;
     color: var(--ifopab-primary);
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     transition: color 300ms ease;
 }
 
 .belief-card p {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 14.5px;
+    line-height: 1.6;
     color: var(--ifopab-text);
     margin: 0;
     transition: color 300ms ease;
@@ -774,9 +1176,53 @@ html {
         padding: 80px 0;
     }
 
-    .belief-card {
-        padding: 36px 26px;
+    .beliefs-cards {
+        grid-auto-columns: minmax(200px, 1fr);
+        gap: 16px;
     }
+
+    .belief-card {
+        padding: 28px 22px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Meet Our Team
+   Coming-soon state (no approved leadership content exists yet) — same
+   gold-outlined note treatment as the gathering section's program-details
+   note, adapted for a light background instead of the dark gathering
+   gradient. Surface background alternates from Beliefs' white.
+   ------------------------------------------------------------------- */
+
+.team-section {
+    padding: 100px 0;
+    background: var(--ifopab-surface);
+    text-align: center;
+}
+
+.team-note {
+    max-width: 480px;
+    margin: 40px auto 0;
+    background: var(--ifopab-white);
+    border: 1px solid color-mix(in srgb, var(--ifopab-accent) 50%, transparent);
+    border-radius: 16px;
+    padding: 28px 32px;
+}
+
+.team-note span {
+    display: block;
+    color: var(--ifopab-accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.team-note p {
+    color: var(--ifopab-text-muted);
+    font-size: 16px;
+    margin: 0;
 }
 
 /* ---------------------------------------------------------------------
@@ -786,15 +1232,37 @@ html {
    the light Vision/Beliefs sections around it. Date/location are
    intentional TBD states styled with the same visual weight as
    confirmed information (docs/03 section 33), not a warning/error look.
-   Pillars use an open editorial-column treatment rather than bordered
-   cards, per docs/03 section 31's "stronger visual treatment than the
-   belief cards" — reusing the same card language here would blur the
-   two sections together instead of distinguishing this one.
+   Event-experience cards are white, popping against the dark gradient
+   for the section's "event detail" moment — icon-led rather than
+   photo-led (see sections/gathering.php for why: every unused photo in
+   the project is already doubled up elsewhere, and reusing one a third
+   time across three side-by-side cards would be the most visible
+   repetition on the site).
    ------------------------------------------------------------------- */
 
 .gathering-section {
+    position: relative;
     padding: 130px 0;
-    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+    background:
+        radial-gradient(circle at 88% 12%, rgba(230, 172, 76, 0.16) 0%, transparent 45%),
+        linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+}
+
+.gathering-section .sec-title {
+    position: relative;
+    padding-top: 26px;
+}
+
+.gathering-section .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
 }
 
 .gathering-section .sec-title h2 {
@@ -814,36 +1282,60 @@ html {
     line-height: 1.7;
 }
 
-.gathering-meta {
-    max-width: 620px;
-    margin: 56px auto 0;
+/* Event info bar — a distinguished "ticket" style component rather
+   than plain text columns, so Date/Location read as event detail
+   rather than an afterthought. */
+.gathering-meta-bar {
+    display: flex;
+    align-items: stretch;
     justify-content: center;
+    max-width: 560px;
+    margin: 48px auto 0;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    padding: 32px 20px;
 }
 
 .gathering-meta-item {
+    flex: 1;
     text-align: center;
-    padding: 0 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 24px;
 }
 
-.gathering-meta-col:first-child .gathering-meta-item {
-    border-left: none;
+.gathering-meta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-accent) 18%, transparent);
+    color: var(--ifopab-accent);
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.gathering-meta-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.18);
 }
 
 .gathering-meta-label {
     display: block;
     color: var(--ifopab-accent);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .gathering-meta-value {
     display: block;
     color: var(--ifopab-white);
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -860,45 +1352,95 @@ html {
     margin-bottom: 18px;
 }
 
-.gathering-pillars {
+/* Event-experience cards: white, elevated, popping against the dark
+   gradient — the section's visual centrepiece. */
+.gathering-experience-cards {
     margin-top: 70px;
     justify-content: center;
 }
 
-.gathering-pillar-col {
-    margin-bottom: 40px;
+.gathering-experience-col {
+    margin-bottom: 30px;
 }
 
-.gathering-pillar {
+.gathering-experience-card {
+    height: 100%;
+    background: var(--ifopab-white);
+    border-radius: 20px;
+    padding: 46px 32px;
     text-align: center;
-    padding: 0 20px;
+    box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.4);
+    transition: transform 350ms ease, box-shadow 350ms ease;
 }
 
-.gathering-pillar-number {
-    display: block;
+.gathering-experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 34px 64px -16px rgba(0, 0, 0, 0.5);
+}
+
+.gathering-experience-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-accent) 14%, transparent);
     color: var(--ifopab-accent);
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
+    font-size: 28px;
+    margin-bottom: 24px;
+    transition: background 350ms ease, color 350ms ease, transform 350ms ease;
 }
 
-.gathering-pillar h3 {
+.gathering-experience-card:hover .gathering-experience-icon {
+    background: var(--ifopab-primary);
     color: var(--ifopab-white);
-    font-size: 24px;
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.gathering-experience-card h3 {
+    font-size: 22px;
     font-weight: 700;
+    color: var(--ifopab-primary);
     margin-bottom: 14px;
 }
 
-.gathering-pillar p {
-    color: var(--ifopab-text-on-dark-muted);
-    font-size: 16px;
+.gathering-experience-card p {
+    font-size: 15.5px;
     line-height: 1.7;
+    color: var(--ifopab-text-muted);
+    margin: 0;
+}
+
+@keyframes gatheringCardIn {
+    0% {
+        opacity: 0;
+        transform: translateY(44px) scale(0.94);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.gatheringCardIn {
+    animation-name: gatheringCardIn;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gathering-experience-card:hover {
+        transform: none;
+    }
+
+    .gathering-experience-card:hover .gathering-experience-icon {
+        transform: none;
+    }
 }
 
 /* "Coming soon" state — calm, intentional, not an error (docs/03
    section 34). Gold outline rather than a filled badge so it doesn't
-   compete with the pillars above it. */
+   compete with the cards above it. */
 .gathering-program-note {
     max-width: 420px;
     margin: 60px auto 0;
@@ -929,30 +1471,54 @@ html {
         padding: 80px 0;
     }
 
-    .gathering-meta-col {
-        margin-bottom: 24px;
+    .gathering-meta-bar {
+        padding: 26px 14px;
     }
 
     .gathering-meta-item {
-        border-left: none;
+        padding: 0 12px;
     }
 
     .gathering-meta-value {
-        font-size: 26px;
+        font-size: 22px;
+    }
+
+    .gathering-experience-card {
+        padding: 38px 26px;
     }
 }
 
 /* ---------------------------------------------------------------------
    Who Should Attend
    Light background, back from the Inaugural Gathering section's dark
-   treatment. Audience tags let a visitor self-identify at a glance
-   before reading the full sentence — not new content, just the same
-   audience list from the approved copy pulled into its own visual row.
+   treatment. Image + content layout — third distinct treatment in the
+   family alongside Calling's offset gold panel and Vision's offset
+   blue panel behind two photos: here a single gold-framed photo with a
+   blue accent circle. Audience tags let a visitor self-identify at a
+   glance before reading the full sentence — not new content, just the
+   same audience list from the approved copy pulled into its own row.
    ------------------------------------------------------------------- */
 
 .attend-section {
     padding: 120px 0;
     background: var(--ifopab-background);
+}
+
+.attend-content .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 24px;
+}
+
+.attend-content .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
 }
 
 .attend-section .sec-title h2 {
@@ -962,38 +1528,47 @@ html {
 
 .attend-tags {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 14px;
-    margin: 0 0 44px;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
 }
 
 .attend-tags li {
-    background: var(--ifopab-surface);
-    border: 1px solid var(--ifopab-primary);
-    border-radius: 999px;
-    padding: 10px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     color: var(--ifopab-primary);
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
 }
 
-.attend-copy {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
+.attend-check {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ifopab-accent);
+    color: var(--ifopab-white);
+    font-size: 12px;
 }
 
 .attend-copy p {
     color: var(--ifopab-text);
     font-size: 18px;
     line-height: 1.7;
+    text-align: left;
+    margin: 0;
 }
 
 .attend-note {
-    max-width: 480px;
-    margin: 36px auto 0;
-    text-align: center;
+    margin-top: 28px;
+    padding-left: 22px;
+    border-left: 4px solid var(--ifopab-accent);
 }
 
 .attend-note p {
@@ -1003,9 +1578,76 @@ html {
     margin: 0;
 }
 
+/* Visual: single photo in a thick gold frame with a blue accent circle
+   peeking from behind — deliberately different geometry from Calling's
+   rectangular offset panel and Vision's two-photo stack. */
+.attend-visual {
+    position: relative;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.attend-visual-accent {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: -26px;
+    left: -26px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 55%, black) 100%);
+    z-index: 1;
+}
+
+.attend-visual-image {
+    position: relative;
+    z-index: 2;
+    display: block;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 8px solid var(--ifopab-accent);
+    box-shadow: 0 30px 60px -14px rgba(14, 95, 127, 0.32);
+}
+
+/* Source photo is a wide banner crop (~3.3:1) — a tall portrait frame
+   here would force cover to zoom in brutally on a sliver of it, so the
+   frame stays landscape to match what the photo actually is. */
+.attend-visual-image img {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    object-position: center 35%;
+    transition: transform 600ms ease;
+}
+
+.attend-visual:hover .attend-visual-image img {
+    transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .attend-visual:hover .attend-visual-image img {
+        transform: none;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .attend-image-column {
+        order: -1;
+        margin-bottom: 50px;
+    }
+
+    .attend-visual {
+        max-width: 400px;
+    }
+}
+
 @media only screen and (max-width: 767px) {
     .attend-section {
         padding: 80px 0;
+    }
+
+    .attend-visual-image img {
+        height: 380px;
     }
 }
 
@@ -1063,96 +1705,11 @@ html {
 }
 
 /* ---------------------------------------------------------------------
-   Save the Date
-   "One of the strongest visual sections... should resemble an event
-   invitation" per docs/02 section 31. Charcoal rather than the
-   Gathering section's blue, so the two dark sections read as distinct
-   moments rather than repeating the same treatment twice. A bordered
-   card creates the "invitation" feel rather than a plain content block.
-   TBD/Antigua use the exact approved public block (docs/04 section 17)
-   — not "October 2027", which the design doc offers only as a softer
-   alternative, not the confirmed content.
-   ------------------------------------------------------------------- */
-
-.save-the-date-section {
-    padding: 140px 0;
-    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
-}
-
-.save-the-date-card {
-    max-width: 620px;
-    margin: 0 auto;
-    text-align: center;
-    border: 1px solid rgba(230, 172, 76, 0.4);
-    border-radius: 24px;
-    padding: 70px 50px;
-}
-
-.save-the-date-eyebrow {
-    color: var(--ifopab-text-on-dark-muted);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-}
-
-.save-the-date-label {
-    color: var(--ifopab-white);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.save-the-date-value {
-    color: var(--ifopab-accent);
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 12px;
-    font-family: var(--ifopab-font-heading);
-}
-
-.save-the-date-location {
-    color: var(--ifopab-white);
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 0;
-}
-
-.save-the-date-divider {
-    width: 60px;
-    height: 1px;
-    background: rgba(230, 172, 76, 0.4);
-    margin: 36px auto;
-}
-
-.save-the-date-supporting {
-    color: var(--ifopab-text-on-dark-muted);
-    font-size: 15px;
-    line-height: 1.7;
-    margin: 0;
-}
-
-@media only screen and (max-width: 767px) {
-    .save-the-date-section {
-        padding: 90px 0;
-    }
-
-    .save-the-date-card {
-        padding: 50px 28px;
-    }
-}
-
-/* ---------------------------------------------------------------------
    Join the Journey
    Page's closing narrative section before the footer. Light background
-   — a breath after Save the Date's dark card, before the dark footer.
-   No CTA button: see the comment in sections/journey.php for why.
+   — a breath after Gathering's dark card-and-gradient treatment, before
+   the dark footer. No CTA button: see the comment in
+   sections/journey.php for why.
    ------------------------------------------------------------------- */
 
 .journey-section {
@@ -1193,43 +1750,335 @@ html {
 }
 
 /* ---------------------------------------------------------------------
-   Footer
-   The template's dark overlay (.footer-top:before, near-black #272727)
-   already gives the footer a solid dark background even with the
-   background-image removed — recoloured to charcoal for consistency
-   with the brand palette rather than the generic demo tone. Logo gets
-   the same white backdrop plate as the header, for the same contrast
-   reason. Middle contact item's highlight block (email/call/address)
-   recoloured from demo green to the accent gold.
+   Contact Us
+   Same approved email/phone/address used sitewide, reuses the calling
+   card's blue-rest/gold-hover language for visual consistency. Surface
+   background separates it from Journey's white above and Footer's
+   charcoal below.
    ------------------------------------------------------------------- */
 
-.footer-top:before {
-    background: var(--ifopab-charcoal);
+.contact-section {
+    padding: 130px 0;
+    background: var(--ifopab-surface);
 }
 
-.footer-top .footer-info .single-item .inner .icon-box {
+.contact-cards {
+    margin-top: 56px;
+    justify-content: center;
+}
+
+.contact-card-col {
+    margin-bottom: 30px;
+}
+
+.contact-card {
+    height: 100%;
+    background: var(--ifopab-white);
+    border: 2px solid var(--ifopab-primary);
+    border-radius: 20px;
+    padding: 44px 30px;
+    text-align: center;
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.contact-card:hover {
+    background: var(--ifopab-accent);
+    border-color: var(--ifopab-accent);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.18);
+}
+
+.contact-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 26px;
+    margin-bottom: 20px;
+    transition: background 300ms ease, color 300ms ease;
+}
+
+.contact-card:hover .contact-card-icon {
+    background: var(--ifopab-white);
+    color: var(--ifopab-primary);
+}
+
+.contact-card-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ifopab-primary);
+    margin-bottom: 10px;
+    transition: color 300ms ease;
+}
+
+.contact-card:hover .contact-card-label {
+    color: var(--ifopab-white);
+}
+
+.contact-card p {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ifopab-text);
+    margin: 0;
+    transition: color 300ms ease;
+}
+
+.contact-card p a {
+    color: inherit;
+}
+
+.contact-card:hover p {
+    color: var(--ifopab-white);
+}
+
+/* ---------------------------------------------------------------------
+   Interior page title banner
+   Shared by every dedicated page (Vision, Beliefs, Team, Gathering,
+   Contact) for wayfinding — the template's version used a stock photo
+   behind a dark overlay; replaced with the same brand-blue gradient
+   already used for the Gathering/Save-the-Date sections rather than
+   depending on an off-brand image.
+   ------------------------------------------------------------------- */
+
+.page-title {
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+    padding: 200px 0 110px;
+}
+
+.page-title:before {
+    display: none;
+}
+
+.page-title .content-box .title h1 {
+    font-family: var(--ifopab-font-heading);
+}
+
+.page-title .content-box .bread-crumb li a:hover {
     color: var(--ifopab-accent);
 }
 
+@media only screen and (max-width: 767px) {
+    .page-title {
+        padding: 160px 0 70px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Footer
+   Brand-blue gradient background (same recipe as Gathering/interior
+   page banners, for a consistent dark-section language) rather than
+   the template's near-black demo tone. Contact cards rebuilt as
+   vertical white cards — icon badge, label, value — matching the
+   contact-card/belief-card language used elsewhere, replacing the
+   template's dark, left-icon horizontal layout entirely. Middle card
+   (Call) is gold, per request; blue text/icon on it rather than white
+   for contrast (white-on-gold measures poorly, same reason the hero
+   CTA's contrast was flagged earlier). Logo gets the same white
+   backdrop plate as the header, for the same contrast reason.
+   ------------------------------------------------------------------- */
+
+.footer-top:before {
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+}
+
+.footer-top {
+    padding-top: 30px;
+}
+
+/* Address wraps to two lines while Email/Call stay on one, so the
+   template's height-by-content cards render uneven — stretch all
+   three to the row's tallest. */
+.footer-top .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-bottom: 20px;
+}
+
+.footer-top .footer-info .single-item {
+    float: none;
+    flex: 1 1 0;
+    min-width: 220px;
+}
+
+.footer-top .footer-info .single-item .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: var(--ifopab-white);
+    border-radius: 20px;
+    padding: 42px 30px;
+    text-align: center;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.18);
+    transition: transform 320ms ease, box-shadow 320ms ease;
+}
+
+.footer-top .footer-info .single-item .inner:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.24);
+}
+
+.footer-top .footer-info .single-item .inner .icon-box {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 26px;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.footer-top .footer-info .single-item .inner h6 {
+    color: var(--ifopab-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.footer-top .footer-info .single-item .inner p {
+    color: var(--ifopab-text);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.footer-top .footer-info .single-item .inner p a {
+    color: inherit;
+}
+
 .footer-top .footer-info .single-item:nth-child(2) .inner {
-    background: color-mix(in srgb, var(--ifopab-primary) 55%, black);
+    background: var(--ifopab-accent);
+}
+
+.footer-top .footer-info .single-item:nth-child(2) .inner .icon-box {
+    background: rgba(14, 95, 127, 0.14);
+    color: var(--ifopab-primary);
+}
+
+.footer-top .footer-info .single-item:nth-child(2) .inner h6,
+.footer-top .footer-info .single-item:nth-child(2) .inner p {
+    color: var(--ifopab-primary);
+}
+
+/* Template's :last-child rule (background: #323232) outranks the
+   general .inner white-card rule above on specificity alone, so the
+   Address card needs its own explicit override rather than inheriting
+   it. */
+.footer-top .footer-info .single-item:last-child .inner {
+    background: var(--ifopab-white);
+}
+
+.footer-top .footer-info .single-item:last-child .inner .icon-box {
+    color: var(--ifopab-primary);
+}
+
+.footer-top .footer-info .single-item:last-child .inner h6 {
+    color: var(--ifopab-primary);
+}
+
+.footer-top .footer-info .single-item:last-child .inner p {
+    color: var(--ifopab-text);
+}
+
+.footer-top .widget-section {
+    padding-top: 60px;
+}
+
+/* Brand column (logo, tagline, connect row) centred as one deliberate
+   block rather than left-hung text — reads more like a considered
+   footer signature than a leftover heading. */
+.footer-top .widget-section .logo-widget {
+    text-align: center;
 }
 
 .footer-logo {
     display: inline-flex;
-    background: var(--ifopab-white);
-    border-radius: 14px;
-    padding: 10px 16px;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
 }
 
 .footer-logo img {
-    max-height: 56px;
+    max-height: 92px;
     width: auto;
 }
 
+.footer-top .widget-section .logo-widget p {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-top .widget-section .logo-widget .social-links {
+    justify-content: center;
+}
+
+/* Larger, brand-coloured icons in white circle badges — the platform's
+   own recognisable colours (Facebook blue, Instagram gradient, YouTube
+   red) rather than a flat monochrome treatment, so each reads as its
+   actual logo at a glance. White badge behind each keeps them legible
+   against the blue footer regardless of how close a given platform's
+   colour sits to the background. */
+.footer-top .widget-section .logo-widget .social-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-top .widget-section .logo-widget .social-links li {
+    margin-right: 0;
+}
+
+.footer-top .widget-section .logo-widget .social-links li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--ifopab-white);
+    font-size: 22px;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
 .footer-top .widget-section .logo-widget .social-links li a:hover {
-    color: var(--ifopab-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.footer-top .widget-section .logo-widget .social-links li a .fa-facebook-square {
+    color: #1877f2;
+}
+
+.footer-top .widget-section .logo-widget .social-links li a .fa-youtube {
+    color: #ff0000;
+}
+
+.footer-top .widget-section .logo-widget .social-links li a .fa-instagram {
+    background: linear-gradient(45deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-top .widget-section .logo-widget .social-links li a .social-x {
+    color: #000;
+    font-size: 20px;
 }
 
 .footer-top .widget-section .links-widget .links-list li a:hover {
@@ -1256,5 +2105,15 @@ html {
 @media only screen and (max-width: 991px) {
     .footer-top .widget-section .logo-widget {
         margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .footer-top .footer-info {
+        flex-direction: column;
+    }
+
+    .footer-top .footer-info .single-item {
+        min-width: 0;
     }
 }

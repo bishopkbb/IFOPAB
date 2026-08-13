@@ -18,9 +18,6 @@
         <?php include __DIR__ . '/sections/beliefs.php'; ?>
         <?php include __DIR__ . '/sections/gathering.php'; ?>
         <?php include __DIR__ . '/sections/attend.php'; ?>
-        <?php include __DIR__ . '/sections/future.php'; ?>
-        <?php include __DIR__ . '/sections/save-the-date.php'; ?>
-        <?php include __DIR__ . '/sections/journey.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>

@@ -13,29 +13,33 @@
 -->
 <section class="vision-section" id="vision">
     <div class="auto-container">
-        <div class="row align-items-center clearfix">
+        <div class="row align-items-start clearfix">
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div class="image_block_1">
                     <div class="image-box">
                         <!-- alt="" until real photography replaces these placeholders -->
-                        <figure class="image image-1"><img src="assets/images/resource/about-1.jpg" alt=""></figure>
-                        <figure class="image image-2"><img src="assets/images/resource/about-2.jpg" alt=""></figure>
+                        <figure class="image image-1 wow fadeInLeft" data-wow-delay="0ms"><img src="assets/images/resource/about-1.jpg" alt=""></figure>
+                        <figure class="image image-2 wow zoomIn" data-wow-delay="300ms" data-wow-duration="700ms"><img src="assets/images/resource/about-2.jpg" alt=""></figure>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div class="content_block_1">
                     <div class="content-box">
+                        <?php if (empty($ifopabHideHeading)): ?>
                         <div class="sec-title">
                             <h2>Our Vision</h2>
                         </div>
+                        <?php endif; ?>
                         <div class="text">
                             <p>IFOPAB is an international fellowship created to unite pastors, apostles, bishops, and other spiritual leaders in authentic relationship centered on Jesus Christ.</p>
                             <p>We believe Christ is the foundation of every ministry and should remain the center of every relationship we build.</p>
                             <p>Our desire is to cultivate a global fellowship where ministry leaders are strengthened through meaningful connection, sound teaching, mutual encouragement, and shared purpose.</p>
                         </div>
-                        <p class="vision-closing">This is not simply an organization.</p>
-                        <p class="vision-closing">It is a Christ-centered fellowship committed to serving those who faithfully serve others.</p>
+                        <div class="vision-closing-group">
+                            <p class="vision-closing">This is not simply an organization.</p>
+                            <p class="vision-closing">It is a Christ-centered fellowship committed to serving those who faithfully serve others.</p>
+                        </div>
                     </div>
                 </div>
             </div>
