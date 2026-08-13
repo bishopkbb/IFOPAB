@@ -1147,3 +1147,47 @@ html {
         padding: 50px 28px;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Join the Journey
+   Page's closing narrative section before the footer. Light background
+   — a breath after Save the Date's dark card, before the dark footer.
+   No CTA button: see the comment in sections/journey.php for why.
+   ------------------------------------------------------------------- */
+
+.journey-section {
+    padding: 120px 0;
+    background: var(--ifopab-background);
+}
+
+.journey-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.journey-copy {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.journey-copy p {
+    color: var(--ifopab-text);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.journey-closing {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin: 20px 0 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .journey-section {
+        padding: 80px 0;
+    }
+}
