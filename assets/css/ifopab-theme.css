@@ -1191,3 +1191,70 @@ html {
         padding: 80px 0;
     }
 }
+
+/* ---------------------------------------------------------------------
+   Footer
+   The template's dark overlay (.footer-top:before, near-black #272727)
+   already gives the footer a solid dark background even with the
+   background-image removed — recoloured to charcoal for consistency
+   with the brand palette rather than the generic demo tone. Logo gets
+   the same white backdrop plate as the header, for the same contrast
+   reason. Middle contact item's highlight block (email/call/address)
+   recoloured from demo green to the accent gold.
+   ------------------------------------------------------------------- */
+
+.footer-top:before {
+    background: var(--ifopab-charcoal);
+}
+
+.footer-top .footer-info .single-item .inner .icon-box {
+    color: var(--ifopab-accent);
+}
+
+.footer-top .footer-info .single-item:nth-child(2) .inner {
+    background: color-mix(in srgb, var(--ifopab-primary) 55%, black);
+}
+
+.footer-logo {
+    display: inline-flex;
+    background: var(--ifopab-white);
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-bottom: 22px;
+}
+
+.footer-logo img {
+    max-height: 56px;
+    width: auto;
+}
+
+.footer-top .widget-section .logo-widget .social-links li a:hover {
+    color: var(--ifopab-accent);
+}
+
+.footer-top .widget-section .links-widget .links-list li a:hover {
+    color: var(--ifopab-accent);
+}
+
+.footer-top .widget-section .links-widget .links-list li a:before {
+    background: var(--ifopab-accent);
+}
+
+.footer-bottom .copyright p a:hover {
+    color: var(--ifopab-accent);
+}
+
+/* No legal-links column remains to balance against (none supplied —
+   docs/07 section 67), so centering reads better than a lone
+   left-floated line with empty space beside it. */
+.footer-bottom .copyright {
+    float: none;
+    text-align: center;
+    width: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+    .footer-top .widget-section .logo-widget {
+        margin-right: 0;
+    }
+}

@@ -21,10 +21,6 @@
         <?php include __DIR__ . '/sections/future.php'; ?>
         <?php include __DIR__ . '/sections/save-the-date.php'; ?>
         <?php include __DIR__ . '/sections/journey.php'; ?>
-        <?php include __DIR__ . '/sections/progress.php'; ?>
-        <?php include __DIR__ . '/sections/testimonial.php'; ?>
-        <?php include __DIR__ . '/sections/clients.php'; ?>
-        <?php include __DIR__ . '/sections/news.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>
