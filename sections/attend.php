@@ -6,8 +6,9 @@
     from the same sentence — not new content, just pulled out so a
     visitor can self-identify at a glance per docs/02 section 26's
     stated purpose. Image + content layout, on the homepage in place of
-    the closing Journey section and also reused as-is on the bundled
-    Gathering page. Photo is page-title.jpg — the one image in the
+    the closing Journey section, and reused (heading hidden) on its own
+    dedicated attend.php page — no longer bundled into the Gathering
+    page, per request. Photo is page-title.jpg — the one image in the
     project that isn't already doubled up in Calling/Vision, so using
     it here avoids a third repeat of the same faces (see docs/07
     section 62/63 area comments elsewhere for the asset-shortage
@@ -20,9 +21,11 @@
         <div class="row align-items-start clearfix">
             <div class="col-lg-6 col-md-12 col-sm-12 attend-content-column">
                 <div class="attend-content">
+                    <?php if (empty($ifopabHideHeading)): ?>
                     <div class="sec-title">
                         <h2>Who Should Attend?</h2>
                     </div>
+                    <?php endif; ?>
 
                     <ul class="attend-tags">
                         <li class="wow fadeInUp" data-wow-delay="0ms">

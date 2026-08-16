@@ -24,6 +24,8 @@
         <!-- End Page Title -->
 
         <?php $ifopabHideHeading = true; include __DIR__ . '/sections/vision.php'; ?>
+        <?php include __DIR__ . '/sections/vision-pillars.php'; ?>
+        <?php include __DIR__ . '/sections/vision-explore.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>

@@ -547,7 +547,9 @@ html {
 #attend,
 #future,
 #journey,
-#contact {
+#contact,
+#contact-form,
+#join {
     scroll-margin-top: var(--header-stack-offset);
 }
 
@@ -1039,6 +1041,193 @@ html {
 }
 
 /* ---------------------------------------------------------------------
+   Vision Pillars (dedicated Vision page only)
+   The six emphases already present verbatim in the Vision paragraph
+   (see sections/vision-pillars.php), pulled into their own icon-led
+   grid. Minimal medallion-and-label treatment — deliberately lighter
+   than the bordered belief-card so the two pages don't feel identical.
+   ------------------------------------------------------------------- */
+
+.vision-pillars-section {
+    padding: 100px 0;
+    background: var(--ifopab-background);
+}
+
+.vision-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+}
+
+.vision-pillar {
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.vision-pillar:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.12);
+}
+
+.vision-pillar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 28px;
+    margin-bottom: 22px;
+    transition: background 350ms ease, color 350ms ease;
+}
+
+.vision-pillar:hover .vision-pillar-icon {
+    background: var(--ifopab-accent);
+    color: var(--ifopab-white);
+}
+
+.vision-pillar h3 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ifopab-primary);
+    margin: 0;
+}
+
+@media only screen and (max-width: 991px) {
+    .vision-pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .vision-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Continue Exploring (dedicated Vision page only)
+   Wayfinding cross-links to related pages — horizontal cards with an
+   icon, title, and a hover-slide arrow micro-interaction.
+   ------------------------------------------------------------------- */
+
+.vision-explore-section {
+    padding: 100px 0;
+    background: var(--ifopab-surface);
+}
+
+.vision-explore-section .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 40px;
+}
+
+.vision-explore-section .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+}
+
+.vision-explore-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.vision-explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.vision-explore-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--ifopab-white);
+    border: 2px solid var(--ifopab-primary);
+    border-radius: 18px;
+    padding: 26px 24px;
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+}
+
+.vision-explore-card:hover {
+    background: var(--ifopab-primary);
+    border-color: var(--ifopab-primary);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(14, 95, 127, 0.2);
+}
+
+.vision-explore-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 18px;
+    transition: background 300ms ease, color 300ms ease;
+}
+
+.vision-explore-card:hover .vision-explore-icon {
+    background: var(--ifopab-accent);
+    color: var(--ifopab-white);
+}
+
+.vision-explore-card h3 {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ifopab-primary);
+    margin: 0;
+    transition: color 300ms ease;
+}
+
+.vision-explore-card:hover h3 {
+    color: var(--ifopab-white);
+}
+
+.vision-explore-arrow {
+    flex-shrink: 0;
+    color: var(--ifopab-primary);
+    font-size: 16px;
+    transition: color 300ms ease, transform 300ms ease;
+}
+
+.vision-explore-card:hover .vision-explore-arrow {
+    color: var(--ifopab-white);
+    transform: translateX(6px);
+}
+
+@media only screen and (max-width: 991px) {
+    .vision-explore-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .vision-pillars-section,
+    .vision-explore-section {
+        padding: 70px 0;
+    }
+}
+
+/* ---------------------------------------------------------------------
    What We Believe
    Extends the calling-card language (rounded, blue border at rest, gold
    fill/white text on hover) rather than a new card system — sized for
@@ -1187,42 +1376,616 @@ html {
 }
 
 /* ---------------------------------------------------------------------
-   Meet Our Team
-   Coming-soon state (no approved leadership content exists yet) — same
-   gold-outlined note treatment as the gathering section's program-details
-   note, adapted for a light background instead of the dark gathering
-   gradient. Surface background alternates from Beliefs' white.
+   What We Believe — image + content (dedicated Beliefs page only)
+   Replaces the card-grid teaser (sections/beliefs.php, still used
+   as-is on the homepage) with a flowing text list next to a photo,
+   matching the Vision page's content treatment per request. Five
+   items separated by a thin rule rather than boxed into cards.
    ------------------------------------------------------------------- */
 
-.team-section {
+.beliefs-intro-section {
+    padding: 120px 0;
+    background: var(--ifopab-background);
+}
+
+/* No H2 here — the page banner above already carries "What We
+   Believe" as the page's H1, so repeating it would duplicate the
+   heading. Just the decorative accent marker used elsewhere. */
+.beliefs-intro-accent {
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.beliefs-intro-copy p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    margin-bottom: 8px;
+}
+
+.beliefs-intro-list {
+    margin-top: 28px;
+}
+
+.beliefs-intro-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ifopab-border);
+}
+
+.beliefs-intro-item:first-child {
+    padding-top: 0;
+}
+
+.beliefs-intro-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.beliefs-intro-item h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 8px;
+}
+
+.beliefs-intro-item p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    margin: 0;
+}
+
+/* Photo: simple frame (thin gold border + shadow, no offset accent
+   panel) — the fourth image+content placement on the site, so a
+   plainer treatment gives variety against the panel/circle motifs
+   already used in Calling, Vision, and Attend. */
+.beliefs-intro-visual {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.beliefs-intro-visual-image {
+    display: block;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 6px solid var(--ifopab-accent);
+    box-shadow: 0 30px 60px -14px rgba(14, 95, 127, 0.32);
+}
+
+.beliefs-intro-visual-image img {
+    display: block;
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    transition: transform 600ms ease;
+}
+
+.beliefs-intro-visual:hover .beliefs-intro-visual-image img {
+    transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .beliefs-intro-visual:hover .beliefs-intro-visual-image img {
+        transform: none;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .beliefs-intro-image-column {
+        order: -1;
+        margin-bottom: 50px;
+    }
+
+    .beliefs-intro-visual {
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .beliefs-intro-section {
+        padding: 80px 0;
+    }
+
+    .beliefs-intro-visual-image img {
+        height: 400px;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   What Each Commitment Means (dedicated Beliefs page only)
+   The concepts already present verbatim inline in each belief's
+   paragraph (see sections/beliefs-detail.php), pulled into concept-chip
+   rows — same precedent as the Vision page's pillar grid. Surface
+   background alternates from the white card row above it.
+   ------------------------------------------------------------------- */
+
+.beliefs-detail-section {
     padding: 100px 0;
     background: var(--ifopab-surface);
-    text-align: center;
 }
 
-.team-note {
-    max-width: 480px;
-    margin: 40px auto 0;
-    background: var(--ifopab-white);
-    border: 1px solid color-mix(in srgb, var(--ifopab-accent) 50%, transparent);
-    border-radius: 16px;
-    padding: 28px 32px;
+.beliefs-detail-section .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 50px;
 }
 
-.team-note span {
+.beliefs-detail-section .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+}
+
+.beliefs-detail-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+/* Editorial list: large muted numerals, bold titles, concepts as
+   plain letter-spaced text — no boxes, no chips, hairline dividers
+   only. */
+.beliefs-detail-list {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.beliefs-detail-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--ifopab-border);
+}
+
+.beliefs-detail-row:first-child {
+    padding-top: 0;
+}
+
+.beliefs-detail-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.beliefs-detail-number {
+    flex-shrink: 0;
+    width: 64px;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ifopab-accent);
+    font-family: var(--ifopab-font-heading);
+}
+
+.beliefs-detail-body h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 10px;
+}
+
+.beliefs-detail-body p {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    color: var(--ifopab-text-muted);
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .beliefs-detail-section {
+        padding: 70px 0;
+    }
+
+    .beliefs-detail-row {
+        gap: 20px;
+        padding: 28px 0;
+    }
+
+    .beliefs-detail-number {
+        width: 44px;
+        font-size: 30px;
+    }
+
+    .beliefs-detail-body h3 {
+        font-size: 19px;
+    }
+}
+
+/* Continue Exploring reuses the Vision page's .vision-explore-*
+   component classes — same cross-link cards, white here instead of
+   surface so it alternates cleanly after the surface detail section
+   above rather than repeating it. */
+.beliefs-explore-section {
+    background: var(--ifopab-background);
+}
+
+/* ---------------------------------------------------------------------
+   Meet Our Team
+   Names, titles, and org structure are approved brand material from
+   the leadership business cards in docs/ifopab brand.pdf (pages
+   31-35) — see sections/team.php for why no photos/bios accompany
+   them. Monogram avatars (initials in a brand-coloured medallion)
+   stand in for photography, consistent with the icon-medallion
+   language used across the site (Vision pillars, Contact cards) but
+   using initials instead of an icon glyph so it reads as a person
+   placeholder rather than a concept icon.
+   ------------------------------------------------------------------- */
+
+.team-leadership-section {
+    padding: 120px 0 80px;
+    background: var(--ifopab-background);
+}
+
+.team-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--ifopab-primary) 0%, color-mix(in srgb, var(--ifopab-primary) 60%, black) 100%);
+    border: 3px solid var(--ifopab-accent);
+    color: var(--ifopab-white);
+    font-family: var(--ifopab-font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Real headshot instead of initials — same circle/border treatment,
+   just filled with a photo (object-fit:cover so off-centre/portrait
+   source photos still crop to a clean circle) rather than text. */
+.team-avatar-photo {
+    padding: 0;
+    overflow: hidden;
+    background: var(--ifopab-surface);
+}
+
+.team-avatar-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.team-role {
     display: block;
     color: var(--ifopab-accent);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+/* Founder: the singular founding figure, given the most visual
+   weight — a large centred spotlight card rather than folded into
+   the council grid below. */
+.team-founder-card {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    text-align: center;
+    background: var(--ifopab-surface);
+    border-radius: 24px;
+    padding: 56px 40px;
+    box-shadow: 0 24px 50px -16px rgba(14, 95, 127, 0.16);
+}
+
+.team-avatar-founder {
+    width: 128px;
+    height: 128px;
+    font-size: 38px;
+    margin-bottom: 24px;
+}
+
+.team-founder-card .team-role {
+    margin-bottom: 12px;
+}
+
+.team-founder-card h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .team-leadership-section {
+        padding: 80px 0 50px;
+    }
+
+    .team-founder-card {
+        padding: 40px 26px;
+    }
+}
+
+/* Council grid — reuses the belief-card blue-border language for the
+   front face; sized for name + role instead of title + paragraph. */
+.team-council-section {
+    padding: 100px 0;
+    background: var(--ifopab-surface);
+}
+
+.team-council-section .sec-title h2 {
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+}
+
+.team-council-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+@media only screen and (max-width: 991px) {
+    .team-council-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .team-council-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.team-council-card {
+    height: 100%;
+    text-align: center;
+    background: var(--ifopab-white);
+    border: 2px solid var(--ifopab-primary);
+    border-radius: 20px;
+    padding: 40px 28px;
+}
+
+.team-council-card .team-avatar {
+    margin-bottom: 20px;
+}
+
+.team-council-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
     margin-bottom: 8px;
 }
 
-.team-note p {
-    color: var(--ifopab-text-muted);
-    font-size: 16px;
-    margin: 0;
+@media only screen and (max-width: 767px) {
+    .team-council-section {
+        padding: 70px 0;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Team card flip
+   Hover reveals a gold back face rather than just recolouring the
+   front in place — the back deliberately carries an honest "coming
+   soon" note (see sections/team.php) rather than a fabricated
+   biography. Blue text on the gold back, not white — white-on-gold
+   measures poorly for contrast (same reason flagged for the hero CTA
+   and used to justify the footer Call card's blue-on-gold text).
+   ------------------------------------------------------------------- */
+
+.team-flip {
+    perspective: 1400px;
+    height: 100%;
+}
+
+.team-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 700ms cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.team-flip:hover .team-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.team-flip-front,
+.team-flip-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.team-flip-front {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.team-flip-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--ifopab-accent) !important;
+    border-color: var(--ifopab-accent) !important;
+}
+
+.team-flip-back .team-avatar {
+    display: none;
+}
+
+.team-flip-back .team-role,
+.team-flip-back h2,
+.team-flip-back h3 {
+    color: var(--ifopab-primary) !important;
+}
+
+.team-flip-back p {
+    color: var(--ifopab-primary);
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    margin: 14px 0 0;
+    opacity: 0.85;
+}
+
+/* Card back for members with a bio: a short teaser (their bio's own
+   first sentence, not new copy) plus a button that opens the full
+   text in a modal — cards stay the compact size everyone else's is,
+   rather than growing to fit the longest bio. */
+.team-bio-teaser {
+    font-size: 13px !important;
+    font-style: normal !important;
+    line-height: 1.55;
+    opacity: 0.9;
+}
+
+.team-bio-expand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    background: var(--ifopab-primary);
+    color: var(--ifopab-white);
+    border: none;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 250ms ease, transform 250ms ease;
+}
+
+.team-bio-expand:hover {
+    background: color-mix(in srgb, var(--ifopab-primary) 80%, black);
+    transform: translateY(-2px);
+}
+
+.team-council-col .team-flip {
+    min-height: 232px;
+}
+
+/* ---------------------------------------------------------------------
+   Team bio modal
+   Full biography text (currently Apostle Eugene Ogu's), opened via the
+   "Read Full Bio" button on a card's back face. Plain, dependency-free
+   show/hide toggled by assets/js/ifopab-team-modal.js — no new library.
+   ------------------------------------------------------------------- */
+
+.team-bio-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.team-bio-modal.is-open {
+    display: flex;
+}
+
+.team-bio-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 30, 40, 0.7);
+}
+
+.team-bio-modal-panel {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--ifopab-white);
+    border-radius: 24px;
+    padding: 52px 44px 44px;
+    text-align: center;
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+}
+
+.team-bio-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--ifopab-surface);
+    border: none;
+    color: var(--ifopab-primary);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 250ms ease, color 250ms ease;
+}
+
+.team-bio-modal-close:hover {
+    background: var(--ifopab-accent);
+    color: var(--ifopab-white);
+}
+
+.team-bio-modal-panel .team-avatar {
+    margin: 0 auto 20px;
+}
+
+.team-bio-modal-panel .team-role {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.team-bio-modal-panel h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+    margin-bottom: 28px;
+}
+
+.team-bio-modal-panel .team-bio {
+    text-align: left;
+}
+
+.team-bio-modal-panel .team-bio p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--ifopab-text);
+    margin: 0 0 18px;
+}
+
+.team-bio-modal-panel .team-bio p:last-child {
+    margin-bottom: 0;
+}
+
+body.team-bio-modal-open {
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 575px) {
+    .team-bio-modal-panel {
+        padding: 44px 26px 32px;
+    }
+}
+
+.team-flip-founder {
+    height: auto;
+    min-height: 360px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .team-flip-inner {
+        transition: none;
+    }
 }
 
 /* ---------------------------------------------------------------------
@@ -1653,10 +2416,13 @@ html {
 
 /* ---------------------------------------------------------------------
    Looking Beyond the Gathering
-   Surface background, alternating from Who Should Attend's plain white.
-   The two closing lines get the same emphasis treatment as the Vision
-   section's closing pair — same rhetorical structure in the approved
-   copy ("This is not X. It is Y."), so the same visual treatment.
+   Surface background, alternating from Who Should Attend's plain
+   white. Image + content layout (see sections/future.php for the
+   image/treatment reasoning) — mirrors Attend's split in reverse for
+   a zigzag rhythm. The two closing lines get the same pull-quote
+   treatment as Calling/Vision's closing statements — same rhetorical
+   structure in the approved copy ("This is not X. It is Y."), so the
+   same visual treatment.
    ------------------------------------------------------------------- */
 
 .future-section {
@@ -1664,43 +2430,105 @@ html {
     background: var(--ifopab-surface);
 }
 
+.future-content .sec-title {
+    position: relative;
+    padding-top: 26px;
+    margin-bottom: 24px;
+}
+
+.future-content .sec-title:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+}
+
 .future-section .sec-title h2 {
     color: var(--ifopab-primary);
     font-family: var(--ifopab-font-heading);
-}
-
-.future-copy {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .future-copy p {
     color: var(--ifopab-text);
     font-size: 18px;
     line-height: 1.7;
+    text-align: left;
     margin-bottom: 20px;
 }
 
+.future-closing-group {
+    margin-top: 28px;
+    padding-left: 22px;
+    border-left: 4px solid var(--ifopab-accent);
+}
+
 .future-closing {
-    text-align: center;
+    text-align: left;
     font-size: 20px;
     font-weight: 700;
     color: var(--ifopab-primary);
     margin: 0 0 8px;
 }
 
-.future-closing:first-of-type {
-    margin-top: 24px;
-}
-
 .future-closing:last-of-type {
     margin-bottom: 0;
+}
+
+/* Photo: brand-blue duotone tint via blend mode rather than the
+   gold-frame/offset-panel treatments used elsewhere — a fifth image
+   placement gets its own distinct language instead of repeating one. */
+.future-visual {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.future-visual-image {
+    position: relative;
+    display: block;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -14px rgba(14, 95, 127, 0.32);
+}
+
+.future-visual-image:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(160deg, color-mix(in srgb, var(--ifopab-primary) 60%, transparent) 0%, color-mix(in srgb, var(--ifopab-accent) 30%, transparent) 100%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.future-visual-image img {
+    display: block;
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    filter: grayscale(25%);
+}
+
+@media only screen and (max-width: 991px) {
+    .future-image-column {
+        margin-bottom: 50px;
+    }
+
+    .future-visual {
+        max-width: 400px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     .future-section {
         padding: 80px 0;
+    }
+
+    .future-visual-image img {
+        height: 380px;
     }
 }
 
@@ -1836,6 +2664,585 @@ html {
 
 .contact-card:hover p {
     color: var(--ifopab-white);
+}
+
+/* ---------------------------------------------------------------------
+   Join Us
+   Info panel (steps + accent) beside an elevated form card. Custom
+   field styling replaces default browser chrome; error/invalid states
+   use a dedicated red token (the palette has no error colour of its
+   own) kept only to this form so it never bleeds into the brand
+   palette elsewhere.
+   ------------------------------------------------------------------- */
+
+.join-section {
+    padding: 130px 0;
+    background: var(--ifopab-surface);
+}
+
+.join-info {
+    position: sticky;
+    top: 140px;
+}
+
+.join-info-accent {
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.join-info h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+    margin-bottom: 16px;
+}
+
+.join-info-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    margin-bottom: 36px;
+}
+
+.join-steps {
+    list-style: none;
+    margin: 0 0 36px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.join-steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.join-step-number {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.join-steps h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 4px;
+}
+
+.join-steps p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ifopab-text-muted);
+    margin: 0;
+}
+
+.join-info-alt {
+    padding-top: 24px;
+    border-top: 1px solid var(--ifopab-border);
+}
+
+.join-info-alt p {
+    font-size: 14px;
+    color: var(--ifopab-text-muted);
+    margin: 0;
+}
+
+.join-info-alt a {
+    color: var(--ifopab-primary);
+    font-weight: 700;
+}
+
+.join-info-alt a:hover {
+    color: var(--ifopab-accent);
+}
+
+.join-form-card {
+    background: var(--ifopab-white);
+    border-radius: 24px;
+    padding: 48px 44px;
+    box-shadow: 0 24px 60px -20px rgba(14, 95, 127, 0.2);
+}
+
+.join-form-alert {
+    background: color-mix(in srgb, #c0392b 10%, transparent);
+    border: 1px solid color-mix(in srgb, #c0392b 35%, transparent);
+    border-radius: 12px;
+    color: #c0392b;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+}
+
+.join-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.join-form-group {
+    margin-bottom: 22px;
+}
+
+.join-form-group label,
+.join-form-consent label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 8px;
+}
+
+.join-required {
+    color: var(--ifopab-accent);
+}
+
+.join-form-group input[type="text"],
+.join-form-group input[type="email"],
+.join-form-group input[type="tel"],
+.join-form-group select,
+.join-form-group textarea {
+    width: 100%;
+    background: var(--ifopab-surface);
+    border: 1px solid var(--ifopab-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: var(--ifopab-font-body);
+    color: var(--ifopab-text);
+    transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.join-form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230E5F7F' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.join-form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.join-form-group input:focus,
+.join-form-group select:focus,
+.join-form-group textarea:focus {
+    outline: none;
+    border-color: var(--ifopab-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifopab-primary) 15%, transparent);
+}
+
+.join-form-group input[aria-invalid="true"],
+.join-form-group select[aria-invalid="true"] {
+    border-color: #c0392b;
+}
+
+.join-form-group input::placeholder,
+.join-form-group textarea::placeholder {
+    color: var(--ifopab-text-muted);
+}
+
+.join-form-error {
+    display: block;
+    color: #c0392b;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.join-form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.join-form-consent input[type="checkbox"] {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--ifopab-primary);
+    flex-shrink: 0;
+}
+
+.join-form-consent label {
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--ifopab-text);
+}
+
+.join-form-submit {
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 16px 40px;
+}
+
+/* Honeypot: off-screen rather than display:none, since some spam bots
+   skip fields hidden that obviously — still fully inert for real
+   visitors and screen readers (aria-hidden on the wrapper). */
+.join-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.join-success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.join-success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-accent) 15%, transparent);
+    color: var(--ifopab-accent);
+    font-size: 28px;
+    margin-bottom: 22px;
+}
+
+.join-success h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin-bottom: 10px;
+}
+
+.join-success p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 991px) {
+    .join-info {
+        position: static;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .join-section {
+        padding: 80px 0;
+    }
+
+    .join-form-card {
+        padding: 34px 24px;
+    }
+
+    .join-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Contact: info content + enquiry form, bold map below
+   Left column is plain content (icon + label + value), not cards — the
+   card grid this replaced (sections/contact.php) is retired but kept
+   on disk, same precedent as journey.php. Form reuses the .join-form
+   component classes built for Join Us. Map uses a key-less Google
+   Maps query embed (see sections/contact-form.php) and sits full-width
+   below both columns as the page's visual anchor.
+   ------------------------------------------------------------------- */
+
+.contact-form-section {
+    padding: 130px 0;
+    background: var(--ifopab-background);
+}
+
+/* Flex column: heading padding-top matches the form card's own
+   (48px) so both headings start at the same height, and the tagline
+   block is pushed to the bottom via margin-top:auto — balancing the
+   column against the taller form regardless of exact content length,
+   rather than guessing a fixed height. */
+.contact-info-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 48px;
+}
+
+.contact-info-accent,
+.contact-form-accent {
+    width: 64px;
+    height: 4px;
+    background: var(--ifopab-accent);
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.contact-info-content h2,
+.contact-form-card h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    font-family: var(--ifopab-font-heading);
+    margin-bottom: 12px;
+}
+
+.contact-info-intro,
+.contact-form-intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ifopab-text);
+    margin-bottom: 36px;
+}
+
+.contact-info-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.contact-info-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ifopab-primary) 10%, transparent);
+    color: var(--ifopab-primary);
+    font-size: 21px;
+}
+
+.contact-info-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ifopab-accent);
+    margin-bottom: 6px;
+}
+
+.contact-info-list a,
+.contact-info-list p {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ifopab-primary);
+    margin: 0;
+}
+
+.contact-info-list a:hover {
+    color: var(--ifopab-accent);
+}
+
+/* Pushed to the bottom of the flex column via margin-top:auto — fills
+   the remaining height against the taller form card and closes the
+   page on the organisation's own approved tagline rather than empty
+   space. */
+.contact-info-tagline {
+    margin-top: auto;
+    padding-top: 40px;
+}
+
+.contact-info-tagline-bar {
+    width: 100%;
+    height: 1px;
+    background: var(--ifopab-border);
+    margin-bottom: 28px;
+}
+
+.contact-info-tagline p {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--ifopab-primary);
+    margin-bottom: 20px;
+}
+
+.contact-info-social {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-info-social li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ifopab-white);
+    border: 1px solid var(--ifopab-border);
+    font-size: 15px;
+    transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.contact-info-social li a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(14, 95, 127, 0.15);
+}
+
+.contact-info-social li a .fa-facebook-square {
+    color: #1877f2;
+}
+
+.contact-info-social li a .fa-youtube {
+    color: #ff0000;
+}
+
+.contact-info-social li a .fa-instagram {
+    background: linear-gradient(45deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info-social li a .social-x {
+    color: #000;
+    width: 15px;
+    height: 15px;
+}
+
+.contact-form-card {
+    background: var(--ifopab-surface);
+    border-radius: 24px;
+    padding: 48px 44px;
+    height: 100%;
+}
+
+/* Submit button — pill shape + hover sweep already come from the
+   shared .theme-btn-one; this adds a right-aligned icon, full width,
+   and a stronger resting shadow so it reads as the page's primary
+   action. */
+.join-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    box-shadow: 0 16px 32px -10px rgba(14, 95, 127, 0.4);
+}
+
+/* Gold hover sweep — same pattern already established for the header's
+   CTA button (blue rest, gold sweep-in on hover, white text retained). */
+.join-form-submit:before {
+    background: var(--ifopab-accent);
+}
+
+.join-form-submit:hover {
+    color: var(--ifopab-white) !important;
+}
+
+.join-form-submit i {
+    font-size: 14px;
+    transition: transform 300ms ease;
+}
+
+.join-form-submit:hover i {
+    transform: translateX(4px);
+}
+
+/* Bold map: full width, tall, sits below both columns as the page's
+   visual anchor rather than a small side panel. */
+.contact-map-bold {
+    margin-top: 70px;
+    text-align: center;
+}
+
+.contact-map-card {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 8px solid var(--ifopab-white);
+    box-shadow: 0 32px 70px -20px rgba(14, 95, 127, 0.32);
+}
+
+.contact-map-card iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* Deep-blue tint to match the brand rather than Google's default
+       map colours — no image asset, purely a CSS filter. */
+    filter: grayscale(45%) contrast(1.05) brightness(0.96);
+}
+
+.contact-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 991px) {
+    .contact-info-content {
+        /* The padding-top exists only to align the two headings when
+           they sit side by side — on stacked mobile layout there's
+           nothing to align against, so it's just dead space. */
+        padding-top: 0;
+        margin-bottom: 50px;
+    }
+
+    .contact-map-card {
+        height: 360px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact-form-section {
+        padding: 80px 0;
+    }
+
+    .contact-form-card {
+        padding: 34px 26px;
+    }
+
+    .contact-map-bold {
+        margin-top: 50px;
+    }
+
+    .contact-map-card {
+        height: 280px;
+    }
 }
 
 /* ---------------------------------------------------------------------

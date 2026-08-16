@@ -61,7 +61,7 @@
                                     <li><a href="beliefs.php">What We Believe</a></li>
                                     <li><a href="team.php">Meet Our Team</a></li>
                                     <li><a href="gathering.php">Gathering</a></li>
-                                    <li><a href="index.php#attend">Join Us</a></li>
+                                    <li><a href="join.php">Join Us</a></li>
                                     <li><a href="contact.php">Contact Us</a></li>
                                 </ul>
                             </div>

@@ -48,7 +48,7 @@
             </div>
             <div class="menu-right-content clearfix">
                 <div class="btn-box">
-                    <a href="index.php#attend" class="theme-btn-one">Join Us</a>
+                    <a href="join.php" class="theme-btn-one">Join Us</a>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="menu-right-content clearfix">
                 <div class="btn-box">
-                    <a href="index.php#attend" class="theme-btn-one">Join Us</a>
+                    <a href="join.php" class="theme-btn-one">Join Us</a>
                 </div>
             </div>
         </div>

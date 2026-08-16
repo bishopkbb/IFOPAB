@@ -24,6 +24,7 @@
         <!-- End Page Title -->
 
         <?php include __DIR__ . '/sections/team.php'; ?>
+        <?php include __DIR__ . '/sections/team-explore.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>

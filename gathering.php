@@ -24,8 +24,8 @@
         <!-- End Page Title -->
 
         <?php $ifopabHideHeading = true; include __DIR__ . '/sections/gathering.php'; ?>
-        <?php include __DIR__ . '/sections/attend.php'; ?>
         <?php include __DIR__ . '/sections/future.php'; ?>
+        <?php include __DIR__ . '/sections/gathering-explore.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>

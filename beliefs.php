@@ -23,7 +23,9 @@
         </section>
         <!-- End Page Title -->
 
-        <?php $ifopabHideHeading = true; include __DIR__ . '/sections/beliefs.php'; ?>
+        <?php include __DIR__ . '/sections/beliefs-intro.php'; ?>
+        <?php include __DIR__ . '/sections/beliefs-detail.php'; ?>
+        <?php include __DIR__ . '/sections/beliefs-explore.php'; ?>
 
         <?php include __DIR__ . '/includes/footer.php'; ?>
     </div>
