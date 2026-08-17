@@ -6,14 +6,16 @@
     Image + content layout (previously plain centred text) so the
     Gathering page isn't card-only — mirrors Attend's content-left/
     image-right split in reverse (image-left/content-right) for a
-    zigzag rhythm down the page. Photo is about-1.jpg used alone
-    (its usual Vision-section pairing is with about-2.jpg) — the
-    freshest single-image option left; page-title.jpg sits one
-    section above in Attend, so reusing it here would repeat the same
-    photo twice in a row. A brand-blue duotone tint (CSS blend mode,
-    not a new asset) gives this placement its own distinct treatment
-    rather than repeating the gold-frame/offset-panel motifs used
-    elsewhere.
+    zigzag rhythm down the page. Photo reuses the client-supplied
+    "To the Men and Women Who Answer the Call" photo (assets/images/
+    resource/To the men and women.png, also used in sections/
+    introduction.php), per request, rather than a separate photo of
+    its own. .future-visual-image img already had a fixed height +
+    object-fit:cover before this swap, so no CSS changes were needed,
+    just the src — the brand-blue duotone tint + grayscale filter
+    (CSS blend mode, not a new asset) still gives this placement its
+    own distinct treatment despite reusing Calling's photo, rather
+    than looking like a plain repeat.
 -->
 <section class="future-section" id="future">
     <div class="auto-container">
@@ -21,8 +23,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 future-image-column">
                 <div class="future-visual wow fadeInLeft" data-wow-delay="0ms">
                     <figure class="future-visual-image">
-                        <!-- alt="" until real photography replaces this placeholder -->
-                        <img src="assets/images/resource/about-1.jpg" alt="">
+                        <img src="assets/images/resource/To the men and women.png" alt="">
                     </figure>
                 </div>
             </div>

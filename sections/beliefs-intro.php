@@ -4,13 +4,15 @@
     the card-grid teaser used on the homepage (sections/beliefs.php,
     unchanged there, still card-based per earlier direction). The five
     commitments are presented as a flowing text list rather than boxed
-    cards here, matching the Vision page's content treatment. Photo is
-    about-2.jpg used alone rather than paired with about-1.jpg (its
-    usual Vision-section pairing) — the least-repeated single-image
-    option available, since about-1/page-title are already doubled up
-    elsewhere. Framed simply (border + shadow, no offset accent panel)
-    for variety against the panel/circle motifs already used in
-    Calling, Vision, and Attend.
+    cards here, matching the Vision page's content treatment. Photo
+    reuses Vision's smaller image (assets/images/resource/Our vision
+    350 x 331.png — the client-supplied clergy/world-map/cross photo,
+    Vision section's image-2 overlay), per request, rather than a
+    separate photo of its own. .beliefs-intro-visual-image img already
+    had a fixed height + object-fit:cover before this swap, so no CSS
+    changes were needed, just the src. Framed simply (border + shadow,
+    no offset accent panel) for variety against the panel/circle motifs
+    already used in Calling, Vision, and Attend.
 -->
 <section class="beliefs-intro-section">
     <div class="auto-container">
@@ -50,8 +52,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 beliefs-intro-image-column">
                 <div class="beliefs-intro-visual">
                     <figure class="beliefs-intro-visual-image wow zoomIn" data-wow-delay="150ms" data-wow-duration="800ms">
-                        <!-- alt="" until real photography replaces this placeholder -->
-                        <img src="assets/images/resource/about-2.jpg" alt="">
+                        <img src="assets/images/resource/Our vision 350 x 331.png" alt="">
                     </figure>
                 </div>
             </div>
