@@ -8,11 +8,14 @@
     stated purpose. Image + content layout, on the homepage in place of
     the closing Journey section, and reused (heading hidden) on its own
     dedicated attend.php page — no longer bundled into the Gathering
-    page, per request. Photo is page-title.jpg — the one image in the
-    project that isn't already doubled up in Calling/Vision, so using
-    it here avoids a third repeat of the same faces (see docs/07
-    section 62/63 area comments elsewhere for the asset-shortage
-    context). Gold-framed single photo with a blue accent circle is a
+    page, per request. Now shows client-supplied photography
+    (assets/images/resource/who should attend.png, kept as supplied
+    rather than renamed) in place of the page-title.jpg placeholder.
+    .attend-visual-image img (ifopab-theme.css) already had a fixed
+    height + object-fit:cover before this swap, so no CSS changes were
+    needed for the src itself — object-position was later centred
+    (center center, was "center 35%" tuned for the old page-title.jpg)
+    per request. Gold-framed single photo with a blue accent circle is a
     third distinct treatment in the image+content family, alongside
     Calling's offset gold panel and Vision's offset blue panel.
 -->
@@ -60,7 +63,7 @@
                     <div class="attend-visual-accent"></div>
                     <figure class="attend-visual-image wow zoomIn" data-wow-delay="150ms" data-wow-duration="800ms">
                         <!-- alt="" until real photography replaces this placeholder -->
-                        <img src="assets/images/background/page-title.jpg" alt="">
+                        <img src="assets/images/resource/who should attend.png" alt="">
                     </figure>
                 </div>
             </div>

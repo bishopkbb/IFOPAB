@@ -43,23 +43,29 @@
 
 @media only screen and (max-width: 991px) {
     :root {
-        --header-top-height: 84px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    :root {
-        --header-top-height: 128px;
+        /* Bar is hidden below this breakpoint (see .header-top rule) —
+           0, not a wrapped-height guess, so header-lower/sticky-header
+           collapse flush to the very top with no reserved gap. */
+        --header-top-height: 0px;
     }
 }
 
 /* ---------------------------------------------------------------------
    Persistent top contact bar
-   Always fixed (not just on scroll) so it remains visible throughout —
-   per docs/00 section 17. The nav/logo bar below it is pushed down to
-   compensate, and the template's existing scroll-triggered .sticky-header
-   is re-anchored to sit directly beneath it rather than at the very top,
-   so the two layers stack without overlapping.
+   Fixed (not just on scroll) above 991px, so it remains visible
+   throughout — desktop and tablet-landscape have the horizontal room
+   for it without crowding the nav. Hidden below 991px: at that width it
+   wraps to 2-3 stacked lines and eats a large slice of the viewport
+   above the fold on a screen that's already short on vertical space,
+   and every value in it (email, phone, address, social) is already
+   repeated in the mobile menu's own Contact Info panel
+   (includes/header.php's .mobile-menu .contact-info), so hiding it here
+   loses no information — the same "don't repeat what's already on the
+   same screen" call made for the hero's slide-3 eyebrow. The nav/logo
+   bar below it is pushed down by --header-top-height to compensate when
+   the top bar IS showing, and the template's existing scroll-triggered
+   .sticky-header is re-anchored to sit directly beneath it rather than
+   at the very top, so the two layers stack without overlapping.
    ------------------------------------------------------------------- */
 
 .header-top {
@@ -186,33 +192,8 @@
 }
 
 @media only screen and (max-width: 991px) {
-    .header-top .top-inner {
-        justify-content: center;
-    }
-
-    .header-top .info-list.pull-left {
-        justify-content: center;
-        text-align: center;
-    }
-}
-
-@media only screen and (max-width: 767px) {
     .header-top {
-        padding: 10px 20px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .header-top {
-        padding: 10px 12px;
-    }
-
-    .header-top .info-list li {
-        font-size: 13px;
-    }
-
-    .header-top .info-list li i {
-        font-size: 15px;
+        display: none;
     }
 }
 
@@ -245,6 +226,67 @@
 
 .header-lower .menu-area .mobile-nav-toggler .icon-bar {
     background-color: var(--ifopab-primary);
+}
+
+/* Button treatment for the hamburger — the template's toggler is just 3
+   bare bars with no backdrop, sizing to its ~30x16px content only (a
+   thin tap target). Scoped to the same max-width:1200px breakpoint
+   responsive.css uses to show the toggler at all, rather than a bare
+   `display:flex` here, so this can't leak into the desktop state where
+   the toggler is meant to stay display:none and the full nav shows
+   instead. Bars flip from brand-blue (above, on the plain white header)
+   to white, since blue-on-blue would disappear once there's a blue
+   backdrop behind them. */
+@media only screen and (max-width: 1200px) {
+    .header-lower .menu-area .mobile-nav-toggler {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 46px;
+        height: 46px;
+        background: var(--ifopab-primary);
+        border-radius: 10px;
+        transition: background-color 250ms ease;
+    }
+
+    .header-lower .menu-area .mobile-nav-toggler .icon-bar {
+        background-color: var(--ifopab-white);
+        width: 20px;
+        margin-bottom: 0;
+    }
+
+    .header-lower .menu-area .mobile-nav-toggler:hover {
+        background: color-mix(in srgb, var(--ifopab-primary) 85%, black);
+    }
+}
+
+/* Below 600px the "JOIN US" pill (.menu-right-content) doesn't have
+   room to fit next to the logo and toggler — .outer-box's flexbox
+   (display:flex, justify-content:space-between, 3 children, no
+   flex-shrink:0 anywhere) was measurably squeezing it down to 0 real
+   width (getBoundingClientRect confirmed) rather than wrapping or
+   overflowing, so it sat there as an invisible, unusable 3rd flex item
+   — and because space-between still reserved its slot at the far right
+   edge, the toggler landed near the visual centre of the header instead
+   of flush right, which read as "the hamburger is mispositioned" even
+   though the toggler's own CSS was fine. Hiding the dead pill here lets
+   space-between distribute across the 2 remaining items (logo, toggler)
+   and pushes the toggler to the true right edge. The mobile menu (which
+   opens from the toggler) has its own "Join Us" link in the nav, so
+   nothing is lost. 599px matches the breakpoint already used elsewhere
+   in responsive.css, not a new one invented for this. Selector is
+   chained onto style.css's own .main-header.style-one .menu-right-
+   content (0,3,0) rather than just .header-lower .menu-right-content
+   (0,2,0) — the plain version lost that cascade battle on the first
+   attempt, confirmed via getBoundingClientRect still showing
+   display:flex, the same specificity mistake as the hero background-
+   position fix above. */
+@media only screen and (max-width: 599px) {
+    .main-header.style-one .header-lower .menu-right-content {
+        display: none;
+    }
 }
 
 /* The sticky CTA's white-background/blue-text override (further below)
@@ -555,13 +597,19 @@ html {
 
 /* ---------------------------------------------------------------------
    Hero
-   The template's original placeholder photos are back (client direction
-   — will be replaced with approved IFOPAB photography later). The dark
-   demo overlay is recoloured to a brand-blue tint instead of neutral
-   grey. Mixed toward transparent (not black) so it's genuine alpha
-   blending — the photo should stand out through the tint, not be
-   painted over by a near-opaque wash. Darkest on the text side for
-   legibility, fading out toward the image's focal subject.
+   Slides 1 and 2 use client-supplied speaker photos in place of the
+   template's stock banner-1/2.jpg — see sections/hero.php's header
+   comment. Same .image-layer as every slide (position, size, the
+   6000ms scale animation on .active — all untouched, from style.css);
+   only the background-color addition below is new, as a fallback fill
+   for the two PNGs' transparent regions. Slide 3 still uses the
+   template's original placeholder photo (page-title.jpg, client
+   direction — will be replaced with approved IFOPAB photography
+   later). The dark demo overlay is recoloured to a brand-blue tint
+   instead of neutral grey. Mixed toward transparent (not black) so
+   it's genuine alpha blending — the image should stand out through the
+   tint, not be painted over by a near-opaque wash. Darkest on the text
+   side for legibility, fading out toward the image's focal subject.
    ------------------------------------------------------------------- */
 
 .banner-carousel .slide-item:before {
@@ -570,6 +618,91 @@ html {
 
 .banner-carousel .slide-item:after {
     background: none;
+}
+
+.banner-carousel .slide-item .image-layer {
+    background-color: var(--ifopab-primary);
+}
+
+/* Slides 1-2's speaker photos (sections/hero.php) — background-size/
+   -position live here rather than inline so the mobile override below
+   is possible at all. auto 120% scales by height instead of width (the
+   shared default is cover/center, which on tall portrait photos inside
+   a wide short banner blew the face up edge-to-edge with zero breathing
+   room for the text); "top" keeps the head in frame since it sits near
+   the top of both canvases. Selector is chained onto the same 3 classes
+   as the base .image-layer rule above (0,3,0 specificity), not just
+   .hero-speaker-bg alone (0,1,0) — a single-class version of this rule
+   silently lost the cascade to that base rule and fell back to plain
+   cover/center, which is what actually caused the "scattered"/blown-up
+   look reported on a real laptop despite screenshots during development
+   looking right (measured via getComputedStyle to confirm, not guessed). */
+.banner-carousel .slide-item .image-layer.hero-speaker-bg {
+    background-size: auto 120%;
+    background-position: right top;
+}
+
+/* Centred instead of right-anchored on mobile, per request — on a
+   narrow stacked layout the text already sits above/behind the image
+   rather than beside it, so there's no "leave room on the left for the
+   copy" reason to keep it right-anchored the way desktop needs. */
+@media only screen and (max-width: 767px) {
+    .banner-carousel .slide-item .image-layer.hero-speaker-bg {
+        background-position: center top;
+    }
+}
+
+/* banner-speaker-2.png has ~9% transparent margin on its own right edge
+   (measured), so "right" alone leaves it looking not-quite-flush next
+   to speaker-1's slide; nudging past 100% crops that margin off. Only
+   safe at tablet width and up, though — verified by screenshot: the
+   same nudge on a narrow phone viewport (auto 120% sizing renders a
+   much smaller image there, so the container/image width gap the
+   percentage math is relative to shrinks a lot too) overshot hard
+   enough to crop most of the face out and run text under the image.
+   Under 768px it falls back to centred (per request — see the shared
+   .hero-speaker-bg mobile override above) rather than the desktop
+   nudge — a few percent of gap is a far smaller problem than a
+   cropped face. */
+.banner-carousel .slide-item .image-layer.hero-speaker-bg.hero-speaker-bg-2 {
+    background-position: 115% top;
+}
+
+@media only screen and (max-width: 767px) {
+    .banner-carousel .slide-item .image-layer.hero-speaker-bg.hero-speaker-bg-2 {
+        background-position: center top;
+    }
+}
+
+/* banner-speaker-3.png (Bishop Abiola Idowu) has a wider ~13% margin on
+   its own right edge (measured — bigger than speaker-2's ~9%, same
+   angled-pose composition), so it needs a bigger nudge past 100% to
+   sit flush; same narrow-phone overshoot risk, same fallback. Also
+   sized up past the shared 120%: this photo's subject only fills ~63%
+   of its own canvas width (measured, vs. ~94%/~72% for speakers 1/2 —
+   same canvas aspect ratio across all three, so at the shared
+   height-based 120% they'd all render the same canvas height but this
+   one's narrower subject reads visibly smaller/slighter next to the
+   other two), so it needs extra size on top of the shared rule to
+   read as the same body size in the carousel, not just the same frame
+   height. */
+.banner-carousel .slide-item .image-layer.hero-speaker-bg.hero-speaker-bg-3 {
+    background-size: auto 145%;
+    background-position: 113% top;
+}
+
+@media only screen and (max-width: 767px) {
+    .banner-carousel .slide-item .image-layer.hero-speaker-bg.hero-speaker-bg-3 {
+        /* Same overshoot problem as speaker-2's mobile fallback, plus a
+           second one: the 145% upsize above needs to reset back to the
+           shared 120% here too, not just the position — 145% combined
+           with a right/off-centre position still cropped the face out
+           and ran text over the arm on a real 375px screenshot, since
+           the desktop tuning doesn't carry over to a much smaller
+           rendered image. */
+        background-size: auto 120%;
+        background-position: center top;
+    }
 }
 
 
@@ -1001,13 +1134,34 @@ html {
     transition: transform 600ms ease;
 }
 
+/* image-1/-2 img both only had width:100% (style.css) with no height/
+   object-fit/aspect-ratio constraint — harmless while the source files
+   (about-1.jpg, about-2.jpg) happened to already be pre-cropped to
+   exactly the template's intended slot size (510x584 / 350x331), but
+   the client's replacement photos aren't pre-cropped to match, so they
+   rendered at their own native aspect ratio/resolution instead — most
+   visibly on image-2, which is position:absolute with no width source
+   of its own (relies on the old file's small intrinsic size; the new
+   file is ~4x the pixel dimensions and rendered at nearly that size,
+   overflowing everything). aspect-ratio + object-fit:cover locks both
+   images to the template's original slot proportions regardless of
+   what the source file's own dimensions are, so any future photo swap
+   is contained automatically instead of depending on pre-cropping. */
+.vision-section .image_block_1 .image-box .image-1 img {
+    aspect-ratio: 510 / 584;
+    object-fit: cover;
+}
+
 .vision-section .image_block_1 .image-box .image-2 {
+    width: 48%;
     border-radius: 16px;
     padding: 8px;
     box-shadow: 0 16px 34px -10px rgba(14, 95, 127, 0.3);
 }
 
 .vision-section .image_block_1 .image-box .image-2 img {
+    aspect-ratio: 350 / 331;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -2371,15 +2525,12 @@ body.team-bio-modal-open {
     box-shadow: 0 30px 60px -14px rgba(14, 95, 127, 0.32);
 }
 
-/* Source photo is a wide banner crop (~3.3:1) — a tall portrait frame
-   here would force cover to zoom in brutally on a sliver of it, so the
-   frame stays landscape to match what the photo actually is. */
 .attend-visual-image img {
     display: block;
     width: 100%;
     height: 340px;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center center;
     transition: transform 600ms ease;
 }
 
@@ -2747,7 +2898,7 @@ body.team-bio-modal-open {
 .join-steps p {
     font-size: 14.5px;
     line-height: 1.6;
-    color: var(--ifopab-text-muted);
+    color: var(--ifopab-text);
     margin: 0;
 }
 
@@ -2758,7 +2909,7 @@ body.team-bio-modal-open {
 
 .join-info-alt p {
     font-size: 14px;
-    color: var(--ifopab-text-muted);
+    color: var(--ifopab-text);
     margin: 0;
 }
 

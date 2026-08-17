@@ -2,9 +2,17 @@
 <!--
     Approved copy verbatim from docs/04 section 10 ("Our Vision").
     Reuses the template's image_block_1 (two overlapping photos) rather
-    than dropping to text-only — the images are the same placeholders
-    the about-section used (about-1.jpg / about-2.jpg), kept in place
-    per client direction pending real IFOPAB photography. Removed the
+    than dropping to text-only. Now shows client-supplied photography
+    (assets/images/resource/Our vision *.jpeg/.png) in place of the
+    template's about-1.jpg/about-2.jpg placeholders — filenames match
+    the client's own naming, kept as supplied rather than renamed. Note
+    image-1 is a .jpeg despite the "510 x 584" name suggesting a size,
+    not a format — matched the real extension, not the name's implied
+    one, or the src 404s. Sizing/cropping for both now lives in
+    ifopab-theme.css (aspect-ratio + object-fit) rather than relying on
+    the source files already being pre-cropped to the exact template
+    slot size the way the old placeholders happened to be — see that
+    file's comment for why. Removed the
     "Find Perfect Candidate" badge overlay (demo text, no equivalent in
     the approved copy) and the numbered-stats / signature blocks below
     the text, since nothing in the Vision copy maps to founder
@@ -18,8 +26,8 @@
                 <div class="image_block_1">
                     <div class="image-box">
                         <!-- alt="" until real photography replaces these placeholders -->
-                        <figure class="image image-1 wow fadeInLeft" data-wow-delay="0ms"><img src="assets/images/resource/about-1.jpg" alt=""></figure>
-                        <figure class="image image-2 wow zoomIn" data-wow-delay="300ms" data-wow-duration="700ms"><img src="assets/images/resource/about-2.jpg" alt=""></figure>
+                        <figure class="image image-1 wow fadeInLeft" data-wow-delay="0ms"><img src="assets/images/resource/Our vision 510 x 584.jpeg" alt=""></figure>
+                        <figure class="image image-2 wow zoomIn" data-wow-delay="300ms" data-wow-duration="700ms"><img src="assets/images/resource/Our vision 350 x 331.png" alt=""></figure>
                     </div>
                 </div>
             </div>

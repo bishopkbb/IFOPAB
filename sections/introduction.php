@@ -3,15 +3,16 @@
     Approved copy verbatim from docs/04 section 9 ("Opening Message").
     Image + content layout rather than the card grid this replaced —
     the five short lines are now a checklist per docs/02 section 11's
-    "deliberate visual treatment" direction. Image reused from the
-    Vision section's about-1.jpg — the only clean, unused professional
-    photo available (banner-1/2.jpg have "Staffing Agency" text baked
-    into the file itself; the template's page-title.jpg is a casual
-    two-women coffee-chat photo, tonally mismatched with "Men and
-    Women Who Answer the Call"). Framed as a single portrait with an
-    offset colour panel rather than Vision's two-photo overlap, so the
-    two sections don't read as a repeated layout. Pending real IFOPAB
-    photography, per client direction.
+    "deliberate visual treatment" direction. Now shows client-supplied
+    photography (assets/images/resource/To the men and women.png, kept
+    as supplied rather than renamed) in place of the reused about-1.jpg
+    placeholder. .calling-visual-image img (ifopab-theme.css) already
+    had a fixed height + object-fit:cover before this swap — unlike
+    Vision's original img which only had width:100% and overflowed when
+    its placeholder was swapped — so no CSS changes were needed here,
+    just the src. Framed as a single portrait with an offset colour
+    panel rather than Vision's two-photo overlap, so the two sections
+    don't read as a repeated layout.
 -->
 <section class="calling-section" id="calling">
     <div class="auto-container">
@@ -61,7 +62,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 calling-image-column">
                 <div class="calling-visual">
                     <div class="calling-visual-panel wow fadeIn" data-wow-delay="0ms"></div>
-                    <figure class="calling-visual-image wow callingPopIn" data-wow-delay="200ms" data-wow-duration="900ms"><img src="assets/images/resource/about-1.jpg" alt=""></figure>
+                    <figure class="calling-visual-image wow callingPopIn" data-wow-delay="200ms" data-wow-duration="900ms"><img src="assets/images/resource/To the men and women.png" alt=""></figure>
                 </div>
             </div>
         </div>
